@@ -1,0 +1,73 @@
+{
+  "matriz_cumplimiento": [
+    {
+      "id": "SUSESO-2026-08-18-001",
+      "tipo_norma": "Resolución o Jornada",
+      "numero": null,
+      "fecha_publicacion": "2026-08-18",
+      "fecha_entrada_vigor": null,
+      "fuente": "SUSESO",
+      "tema_sst": "Participación y capacitación",
+      "subtema": "Comités Paritarios de Seguridad y Salud en el Trabajo",
+      "descripcion": "SUSESO inaugura Jornada Nacional para Comités Paritarios, promoviendo la formación, fortalecimiento y buenas prácticas de los comités paritarios en las empresas chilenses.",
+      "aplica_a": "Todos los empleadores que deben tener comité paritario según ley (generalmente 10 o más trabajadores)",
+      "obligaciones_clave": [
+        "Facilitar la formación de miembros del comité paritario",
+        "Permitir tiempo remunerado para participación en actividades de capacitación",
+        "Proveer recursos necesarios para el funcionamiento del comité",
+        "Considerar las recomendaciones del comité en la gestión de riesgos"
+      ],
+      "sanciones_potenciales": "Multas por incumplimiento de normas sobre comités paritarios (según Ley 16.744)",
+      "estado_revision": "Nuevo - Pendiente de análisis detallado",
+      "acciones_requeridas": "Verificar existencia y funcionamiento de comité paritario, planificar capacitación anual",
+      "enlace_oficial": "https://www.suseso.gob.cl/601/w3-channel.html",
+      "fecha_deteccion": "2026-08-23T10:30:00Z",
+      "fuente_deteccion": "SUSESO - Sección Noticias",
+      "palabras_clave": [
+        "comités paritarios",
+        "participación trabajadores",
+        "capacitación SST"
+      ],
+      "relevancia_score": 8.0
+    }
+  ],
+  "historial_completo": [
+    {
+      "id": "SUSESO-2026-08-18-001",
+      "tipo_norma": "Resolución o Jornada",
+      "numero": null,
+      "fecha_publicacion": "2026-08-18",
+      "fecha_entrada_vigor": null,
+      "fuente": "SUSESO",
+      "tema_sst": "Participación y capacitación",
+      "subtema": "Comités Paritarios de Seguridad y Salud en el Trabajo",
+      "descripcion": "SUSESO inaugura Jornada Nacional para Comités Paritarios, promoviendo la formación, fortalecimiento y buenas prácticas de los comités paritarios en las empresas chilenses.",
+      "aplica_a": "Todos los empleadores que deben tener comité paritario según ley (generalmente 10 o más trabajadores)",
+      "obligaciones_clave": [
+        "Facilitar la formación de miembros del comité paritario",
+        "Permitir tiempo remunerado para participación en actividades de capacitación",
+        "Proveer recursos necesarios para el funcionamiento del comité",
+        "Considerar las recomendaciones del comité en la gestión de riesgos"
+      ],
+      "sanciones_potenciales": "Multas por incumplimiento de normas sobre comités paritarios (según Ley 16.744)",
+      "estado_revision": "Nuevo - Pendiente de análisis detallado",
+      "acciones_requeridas": "Verificar existencia y funcionamiento de comité paritario, planificar capacitación anual",
+      "enlace_oficial": "https://www.suseso.gob.cl/601/w3-channel.html",
+      "fecha_deteccion": "2026-08-23T10:30:00Z",
+      "fuente_deteccion": "SUSESO - Sección Noticias",
+      "palabras_clave": [
+        "comités paritarios",
+        "participación trabajadores",
+        "capacitación SST"
+      ],
+      "relevancia_score": 8.0
+    }
+  ],
+  "metadata": {
+    "ultima_actualizacion": "2026-08-23T17:44:55.399753Z",
+    "total_normas_activas": 1,
+    "nuevas_detecciones_hoy": 1,
+    "fuentes_monitoreadas": 1,
+    "version_matriz": "1.0"
+  }
+}

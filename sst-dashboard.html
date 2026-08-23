@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard de Cumplimiento SST — GesstIA</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f9f9f9; }
+        h1 { color: #2c3e50; text-align: center; }
+        p { text-align: center; color: #555; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        th, td { padding: 12px 15px; text-align: left; border-bottom: 1px solid #ddd; font-size: 14px; }
+        th { background-color: #3498db; color: white; position: sticky; top: 0; }
+        tr:hover { background-color: #f1f1f1; }
+        .action-list { margin: 5px 0; padding-left: 20px; }
+        .link { color: #2980b9; text-decoration: none; }
+        .link:hover { text-decoration: underline; }
+        .score { font-weight: bold; }
+        .score.high { color: #e74c3c; }
+        .score.medium { color: #f39c12; }
+        .score.low { color: #27ae60; }
+        .badge-gesstia { text-align:center; margin-top:20px; color:#7f8c8d; font-size:13px; }
+        .error { color:#e74c3c; text-align:center; padding:20px; font-weight:bold; }
+        .loading { text-align:center; padding:30px; color:#555; }
+    </style>
+</head>
+<body>
+    <h1>Dashboard de Cumplimiento SST</h1>
+    <p>Última actualización: <span id="last-update">Cargando...</span></p>
+    <div id="loading" class="loading">Cargando matriz de cumplimiento...</div>
+    <table id="norms-table" style="display:none">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Tipo</th>
+                <th>Número</th>
+                <th>Fecha Publicación</th>
+                <th>Fuente</th>
+                <th>Tema SST</th>
+                <th>Subtema</th>
+                <th>Descripción</th>
+                <th>Aplica a</th>
+                <th>Obligaciones Clave</th>
+                <th>Acciones Requeridas</th>
+                <th>Enlace Oficial</th>
+                <th>Relevancia</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Filas se insertarán aquí por JavaScript -->
+        </tbody>
+    </table>
+    <div id="error" class="error" style="display:none">No se pudo cargar la matriz de cumplimiento SST.</div>
+    <div class="badge-gesstia">GesstIA · Matriz de cumplimiento normativo SST · v1.0</div>
+
+    <script>
+        // Cargar la matriz desde sst-matriz.json (GitHub Pages) con fallback a data embebida
+        (async function loadMatriz() {
+            let matrizData = null;
+            try {
+                const res = await fetch('sst-matriz.json');
+                if (res.ok) {
+                    matrizData = await res.json();
+                }
+            } catch (e) {
+                console.warn('No se pudo cargar sst-matriz.json, usando data embebida');
+            }
+
+            // Fallback: data embebida (si el JSON no existe o falla)
+            if (!matrizData) {
+                matrizData = {
+                    "matriz_cumplimiento": [
+                        {
+                            "id": "SUSESO-2026-08-18-001",
+                            "tipo_norma": "Resolución o Jornada",
+                            "numero": "",
+                            "fecha_publicacion": "2026-08-18",
+                            "fecha_entrada_vigor": "",
+                            "fuente": "SUSESO",
+                            "tema_sst": "Participación y capacitación",
+                            "subtema": "Comités Paritarios de Seguridad y Salud en el Trabajo",
+                            "descripcion": "Jornada de capacitación sobre comités paritarios de seguridad y salud en el trabajo, difundida por SUSESO el 18 de agosto de 2026.",
+                            "aplica_a": "Empresas con 25 o más trabajadores",
+                            "obligaciones_clave": [
+                                "Verificar existencia y funcionamiento del comité paritario",
+                                "Planificar capacitación anual en prevención de riesgos"
+                            ],
+                            "acciones_requeridas": "Verificar existencia y funcionamiento de comité paritario, planificar capacitación anual",
+                            "enlace_oficial": "https://www.suseso.gob.cl/601/w3-channel.html",
+                            "relevancia_score": 8.0
+                        }
+                    ],
+                    "metadata": {
+                        "ultima_actualizacion": "2026-08-23T10:30:00Z",
+                        "total_normas_activas": 1,
+                        "nuevas_detecciones_hoy": 1,
+                        "fuentes_monitoreadas": 1,
+                        "version_matriz": "1.0"
+                    }
+                };
+            }
+
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('last-update').textContent = new Date(matrizData.metadata.ultima_actualizacion).toLocaleString();
+
+            const tbody = document.querySelector('#norms-table tbody');
+            const rows = matrizData.matriz_cumplimiento;
+            if (!rows || rows.length === 0) {
+                document.getElementById('error').style.display = 'block';
+                return;
+            }
+
+            document.getElementById('norms-table').style.display = '';
+            rows.forEach(norma => {
+                const tr = document.createElement('tr');
+                const obligaciones = (norma.obligaciones_clave || []).map(o => `<li>${o}</li>`).join('');
+                tr.innerHTML = `
+                    <td>${norma.id}</td>
+                    <td>${norma.tipo_norma}</td>
+                    <td>${norma.numero || '-'}</td>
+                    <td>${norma.fecha_publicacion}</td>
+                    <td>${norma.fuente}</td>
+                    <td>${norma.tema_sst}</td>
+                    <td>${norma.subtema || '-'}</td>
+                    <td>${norma.descripcion || '-'}</td>
+                    <td>${norma.aplica_a || '-'}</td>
+                    <td class="action-list"><ul>${obligaciones || '<li>-</li>'}</ul></td>
+                    <td class="action-list">${norma.acciones_requeridas || '-'}</td>
+                    <td>${norma.enlace_oficial ? `<a href="${norma.enlace_oficial}" class="link" target="_blank">Ver fuente</a>` : '-'}</td>
+                    <td>
+                        <span class="score ${norma.relevancia_score >= 8 ? 'high' : norma.relevancia_score >= 5 ? 'medium' : 'low'}">
+                            ${norma.relevancia_score}/10
+                        </span>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        })();
+    </script>
+</body>
+</html>
