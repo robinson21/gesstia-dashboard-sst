@@ -24,8 +24,17 @@
       "enlace_oficial": "https://www.bcn.cl/leychile/navegar?idNorma=28650",
       "fecha_deteccion": "2026-08-23T17:10:00Z",
       "fuente_deteccion": "BCN - LeyChile",
-      "palabras_clave": ["seguro social", "accidentes del trabajo", "enfermedades profesionales", "cotización", "mutualidades", "prevención de riesgos"],
-      "relevancia_score": 10.0
+      "palabras_clave": [
+        "seguro social",
+        "accidentes del trabajo",
+        "enfermedades profesionales",
+        "cotización",
+        "mutualidades",
+        "prevención de riesgos"
+      ],
+      "relevancia_score": 10.0,
+      "aplica_desde_trabajadores": 1,
+      "detalle_umbral": "Seguro y denuncia: todo empleador (1+ colaborador). Comité Paritario: más de 25 trabajadores (art. 67). Departamento de Prevención de Riesgos: más de 100 trabajadores (art. 65)."
     },
     {
       "id": "DS-44-2024",
@@ -52,8 +61,55 @@
       "enlace_oficial": "https://www.bcn.cl/leychile/navegar?idNorma=1205298",
       "fecha_deteccion": "2026-08-23T17:10:00Z",
       "fuente_deteccion": "BCN - LeyChile",
-      "palabras_clave": ["gestión preventiva", "comités paritarios", "departamento de prevención", "reglamento interno", "OIT 155", "OIT 187", "OIT 190"],
-      "relevancia_score": 10.0
+      "palabras_clave": [
+        "gestión preventiva",
+        "comités paritarios",
+        "departamento de prevención",
+        "reglamento interno",
+        "OIT 155",
+        "OIT 187",
+        "OIT 190"
+      ],
+      "relevancia_score": 10.0,
+      "aplica_desde_trabajadores": 1,
+      "detalle_umbral": "Sistema de gestión preventiva: todos. Comité paritario: >25 trabajadores por centro de trabajo. Departamento de prevención: >100 trabajadores. Coordinación preventiva: empleador mandante con contratistas."
+    },
+    {
+      "id": "DS-160-2009-COMB",
+      "tipo_norma": "Decreto Supremo",
+      "numero": "160 (Min. Economía, 2008/2009)",
+      "fecha_publicacion": "2009-07-07",
+      "fecha_entrada_vigor": "2009-07-07",
+      "fuente": "BCN LeyChile / Diario Oficial",
+      "tema_sst": "Seguridad rubro combustibles",
+      "subtema": "Producción, refinación, transporte, almacenamiento, distribución y abastecimiento de combustibles líquidos",
+      "descripcion": "Reglamento de seguridad (SEC) que regula todas las instalaciones y operaciones de combustibles líquidos (CL): producción y refinación, transporte, almacenamiento, distribución y abastecimiento. Reemplazó al DS 298/1994. Establece requisitos de diseño, construcción y operación de estaciones de servicio (servicentros), depósitos, camiones tanque y demás instalaciones, junto a obligaciones de comunicación de inicio de obra/puesta en servicio, fiscalización y sanciones. Fiscaliza la SEC (Superintendencia de Electricidad y Combustibles).",
+      "aplica_a": "Empresas que importen, refinen, distribuyan, transporten o expendan combustibles líquidos derivados del petróleo y biocombustibles (estaciones de servicio, distribuidoras, transporte cisterna, depósitos)",
+      "obligaciones_clave": [
+        "Cumplir requisitos de seguridad en diseño, construcción y operación de las instalaciones",
+        "Comunicar inicio de obra y puesta en servicio de instalaciones de CL a la SEC",
+        "Mantener condiciones de seguridad de depósitos, envases, cañerías y medios de traslado",
+        "Adoptar precauciones para prevenir todo peligro en la manipulación de combustibles o inflamables",
+        "Cumplir la normativa de transporte de CL (camiones tanque) y operaciones de descarga"
+      ],
+      "sanciones_potenciales": "Sanciones de la SEC conforme a la Ley 18.410 (Superintendencia de Electricidad y Combustibles), incluyendo multas y posibles medidas de seguridad",
+      "estado_revision": "Vigente - Verificada en BCN LeyChile (modificado por DS 26/2025, Min. Energía)",
+      "acciones_requeridas": "Verificar autorizaciones SEC de todas las instalaciones, cumplimiento de normas de diseño/operación y comunicación de puesta en servicio",
+      "enlace_oficial": "https://www.bcn.cl/leychile/Navegar?idNorma=1004120",
+      "fecha_deteccion": "2026-08-23T18:00:00Z",
+      "fuente_deteccion": "BCN - LeyChile",
+      "palabras_clave": [
+        "combustibles líquidos",
+        "SEC",
+        "estaciones de servicio",
+        "camiones tanque",
+        "almacenamiento",
+        "distribución",
+        "transporte"
+      ],
+      "relevancia_score": 10.0,
+      "aplica_desde_trabajadores": 1,
+      "detalle_umbral": "Por instalación o empresa del rubro combustibles (no por n° de trabajadores)."
     },
     {
       "id": "DS-594-1999",
@@ -79,8 +135,18 @@
       "enlace_oficial": "https://www.bcn.cl/leychile/navegar?idNorma=167766",
       "fecha_deteccion": "2026-08-23T17:10:00Z",
       "fuente_deteccion": "BCN - LeyChile",
-      "palabras_clave": ["condiciones sanitarias", "agua potable", "ruido", "iluminación", "ventilación", "límites de tolerancia", "fiscalización sanitaria"],
-      "relevancia_score": 9.5
+      "palabras_clave": [
+        "condiciones sanitarias",
+        "agua potable",
+        "ruido",
+        "iluminación",
+        "ventilación",
+        "límites de tolerancia",
+        "fiscalización sanitaria"
+      ],
+      "relevancia_score": 9.5,
+      "aplica_desde_trabajadores": 1,
+      "detalle_umbral": "Todo lugar de trabajo, sin mínimo de trabajadores."
     },
     {
       "id": "LEY-21643-KARIN",
@@ -107,8 +173,121 @@
       "enlace_oficial": "https://www.bcn.cl/leychile/navegar?idNorma=1200096",
       "fecha_deteccion": "2026-08-23T17:10:00Z",
       "fuente_deteccion": "BCN - LeyChile",
-      "palabras_clave": ["acoso laboral", "acoso sexual", "violencia en el trabajo", "protocolo de prevención", "riesgos psicosociales", "Ley Karin"],
-      "relevancia_score": 9.5
+      "palabras_clave": [
+        "acoso laboral",
+        "acoso sexual",
+        "violencia en el trabajo",
+        "protocolo de prevención",
+        "riesgos psicosociales",
+        "Ley Karin"
+      ],
+      "relevancia_score": 9.5,
+      "aplica_desde_trabajadores": 1,
+      "detalle_umbral": "Todo empleador (privado y público). Protocolo incorporado al RIOHS en empresas de 10+ (RIOHS obligatorio)."
+    },
+    {
+      "id": "DS-26-2025-COMB",
+      "tipo_norma": "Decreto Supremo (Modificatorio)",
+      "numero": "26 (Min. Energía, 2025)",
+      "fecha_publicacion": "2025-09-17",
+      "fecha_entrada_vigor": "2025-10-18",
+      "fuente": "BCN LeyChile / Diario Oficial",
+      "tema_sst": "Seguridad rubro combustibles",
+      "subtema": "Tanques de doble pared y monitoreo de fugas/derrames",
+      "descripcion": "Modifica el DS 160/2008 para fortalecer la seguridad de las instalaciones de combustibles líquidos minimizando riesgos de fugas y derrames. Incorpora expresamente la tecnología de tanques de doble pared (contención de derrames sin filtración al medio ambiente) y actualiza la normativa sobre diseño y construcción de los tanques de almacenamiento de CL, exigiendo tecnologías de monitoreo y prevención con detección temprana y respuesta inmediata ante derrames.",
+      "aplica_a": "Empresas con instalaciones de almacenamiento y expendio de combustibles líquidos (estaciones de servicio, depósitos, plantas de almacenamiento)",
+      "obligaciones_clave": [
+        "Migrar o adoptar sistemas de tanques de doble pared donde corresponda",
+        "Incorporar tecnologías de monitoreo y detección temprana de fugas/derrames",
+        "Garantizar respuesta inmediata ante fugas y derrames",
+        "Cumplir los nuevos estándares de diseño y construcción de tanques de almacenamiento"
+      ],
+      "sanciones_potenciales": "Fiscalización SEC; sanciones por incumplimiento de las nuevas normas de diseño y monitoreo (Ley 18.410)",
+      "estado_revision": "Vigente - Verificada en BCN LeyChile (vigente desde 18-10-2025; deroga/actualiza partes del DS 160)",
+      "acciones_requeridas": "Auditar los tanques de almacenamiento existentes y planificar la implementación de tanques doble pared y sistemas de monitoreo",
+      "enlace_oficial": "https://www.bcn.cl/leychile/navegar?idNorma=1216783",
+      "fecha_deteccion": "2026-08-23T18:00:00Z",
+      "fuente_deteccion": "BCN - LeyChile",
+      "palabras_clave": [
+        "tanques doble pared",
+        "monitoreo fugas",
+        "derrames",
+        "combustibles líquidos",
+        "almacenamiento"
+      ],
+      "relevancia_score": 9.5,
+      "aplica_desde_trabajadores": 1,
+      "detalle_umbral": "Por instalación del rubro combustibles con tanques de almacenamiento, no por n° de trabajadores."
+    },
+    {
+      "id": "CT-RIOHS-ART153",
+      "tipo_norma": "Ley",
+      "numero": "Código del Trabajo, arts. 153 a 157 (DFL 1/1994)",
+      "fecha_publicacion": "1994-01-06",
+      "fecha_entrada_vigor": "1994-01-06",
+      "fuente": "BCN LeyChile / Diario Oficial",
+      "tema_sst": "Reglamento interno y participación",
+      "subtema": "Reglamento Interno de Orden, Higiene y Seguridad (RIOHS)",
+      "descripcion": "El artículo 153 del Código del Trabajo obliga a toda empresa, establecimiento, sucursal o unidad económica con diez o más trabajadores a tener un Reglamento Interno de Orden, Higiene y Seguridad (RIOHS), que debe contener obligaciones y prohibiciones, incluidas las normas de higiene y seguridad en el trabajo. Tras la Ley Karin (21.643), el RIOHS debe incorporar el protocolo de prevención del acoso laboral, sexual y de violencia en el trabajo. Debe ser depositado en la Dirección del Trabajo y en la mutualidad/organismo administrador dentro de los 5 días de su dictación o modificación.",
+      "aplica_a": "Empresas, establecimientos, sucursales o unidades económicas con 10 o más trabajadores",
+      "obligaciones_clave": [
+        "Formular el RIOHS y actualizarlo cuando corresponda",
+        "Incorporar protocolo de prevención de acoso y violencia (Ley Karin)",
+        "Depositar copia en la Inspección del Trabajo y en el organismo administrador dentro de 5 días",
+        "Dar a conocer el reglamento a los trabajadores y ponerlo escrito en lugar visible",
+        "Entregar ejemplar o acceso al comité paritario"
+      ],
+      "sanciones_potenciales": "Multas de la Dirección del Trabajo (1 a 10 UTM según número de trabajadores), con duplicación en caso de reincidencia.",
+      "estado_revision": "Vigente - Verificada en BCN LeyChile (últimas modificaciones por Ley Karin)",
+      "acciones_requeridas": "Verificar existencia del RIOHS actualizado, depósito en DT y mutualidad, e incorporación del protocolo Karin.",
+      "enlace_oficial": "https://www.bcn.cl/leychile/navegar?idNorma=45663",
+      "fecha_deteccion": "2026-08-23T17:35:00Z",
+      "fuente_deteccion": "BCN - LeyChile",
+      "palabras_clave": [
+        "RIOHS",
+        "reglamento interno",
+        "10 trabajadores",
+        "orden higiene seguridad"
+      ],
+      "relevancia_score": 9.0,
+      "aplica_desde_trabajadores": 10,
+      "detalle_umbral": "Centros con 10+ trabajadores."
+    },
+    {
+      "id": "DS-148-2003-RESIDUOS",
+      "tipo_norma": "Decreto Supremo",
+      "numero": "148 (MINSAL, 2003)",
+      "fecha_publicacion": "2004-06-16",
+      "fecha_entrada_vigor": "2004-06-16",
+      "fuente": "BCN LeyChile / Diario Oficial",
+      "tema_sst": "Residuos peligrosos (ambiente y SST)",
+      "subtema": "Manejo de residuos peligrosos, aceites y lubricantes usados",
+      "descripcion": "Reglamento sanitario del MINSAL sobre manejo de residuos peligrosos (REL). Regula la clasificación, almacenamiento, transporte y eliminación de residuos peligrosos. Para el rubro combustibles es aplicable al manejo de aceites usados, lubricantes, lodos de estanques, materiales absorbentes contaminados con hidrocarburos y otros residuos clasificados como peligrosos. Exige registro ante la SEREMI de Salud y cumplimiento de requisitos de almacenamiento (señalización, contención, compatibilidad) y transporte por parte de empresas autorizadas.",
+      "aplica_a": "Toda instalación que genere, almacene, transporte o elimine residuos peligrosos, incluidos estaciones de servicio y distribuidoras de combustibles (aceites/lubricantes usados, absorbentes contaminados)",
+      "obligaciones_clave": [
+        "Registrar la generación de residuos peligrosos ante la SEREMI de Salud",
+        "Almacenar residuos peligrosos en recintos señalizados, con contención y compatibilidad",
+        "Contratar transporte y disposición final con empresas autorizadas",
+        "Mantener registro de generación/transferencia de residuos (mínimos exigidos por reglamento)",
+        "Implementar plan de manejo y contingencias para derrames"
+      ],
+      "sanciones_potenciales": "Sanciones sanitarias conforme al Código Sanitario y a las leyes de medio ambiente aplicables, aplicadas por la SEREMI de Salud",
+      "estado_revision": "Vigente - Verificada en BCN LeyChile",
+      "acciones_requeridas": "Verificar registro ante SEREMI de Salud, condiciones de almacenamiento de residuos y contratos con gestores autorizados",
+      "enlace_oficial": "https://www.bcn.cl/leychile/navegar?idNorma=226458",
+      "fecha_deteccion": "2026-08-23T18:00:00Z",
+      "fuente_deteccion": "BCN - LeyChile",
+      "palabras_clave": [
+        "residuos peligrosos",
+        "aceites usados",
+        "lubricantes",
+        "SEREMI de Salud",
+        "almacenamiento",
+        "contención"
+      ],
+      "relevancia_score": 8.5,
+      "aplica_desde_trabajadores": 1,
+      "detalle_umbral": "Por generación de residuos peligrosos, no por n° de trabajadores."
     },
     {
       "id": "LEY-21220-TELETRABAJO",
@@ -134,8 +313,83 @@
       "enlace_oficial": "https://www.bcn.cl/leychile/navegar?idNorma=1143741",
       "fecha_deteccion": "2026-08-23T17:10:00Z",
       "fuente_deteccion": "BCN - LeyChile",
-      "palabras_clave": ["teletrabajo", "trabajo a distancia", "desconexión digital", "acuerdo escrito", "SST teletrabajo"],
-      "relevancia_score": 8.0
+      "palabras_clave": [
+        "teletrabajo",
+        "trabajo a distancia",
+        "desconexión digital",
+        "acuerdo escrito",
+        "SST teletrabajo"
+      ],
+      "relevancia_score": 8.0,
+      "aplica_desde_trabajadores": 1,
+      "detalle_umbral": "Si existen trabajadores en teletrabajo/distancia (independiente del número)."
+    },
+    {
+      "id": "SUSESO-2026-08-18-001",
+      "tipo_norma": "Resolución o Jornada",
+      "numero": null,
+      "fecha_publicacion": "2026-08-18",
+      "fecha_entrada_vigor": null,
+      "fuente": "SUSESO",
+      "tema_sst": "Participación y capacitación",
+      "subtema": "Comités Paritarios de Seguridad y Salud en el Trabajo",
+      "descripcion": "SUSESO inaugura Jornada Nacional para Comités Paritarios, promoviendo la formación, fortalecimiento y buenas prácticas de los comités paritarios en las empresas chilenses.",
+      "aplica_a": "Todos los empleadores que deben tener comité paritario según ley (generalmente 10 o más trabajadores)",
+      "obligaciones_clave": [
+        "Facilitar la formación de miembros del comité paritario",
+        "Permitir tiempo remunerado para participación en actividades de capacitación",
+        "Proveer recursos necesarios para el funcionamiento del comité",
+        "Considerar las recomendaciones del comité en la gestión de riesgos"
+      ],
+      "sanciones_potenciales": "Multas por incumplimiento de normas sobre comités paritarios (según Ley 16.744)",
+      "estado_revision": "Nuevo - Pendiente de análisis detallado",
+      "acciones_requeridas": "Verificar existencia y funcionamiento de comité paritario, planificar capacitación anual",
+      "enlace_oficial": "https://www.suseso.gob.cl/601/w3-channel.html",
+      "fecha_deteccion": "2026-08-23T10:30:00Z",
+      "fuente_deteccion": "SUSESO - Sección Noticias",
+      "palabras_clave": [
+        "comités paritarios",
+        "participación trabajadores",
+        "capacitación SST"
+      ],
+      "relevancia_score": 8.0,
+      "aplica_desde_trabajadores": 25,
+      "detalle_umbral": "Comités paritarios (empresas >25 trabajadores)."
+    },
+    {
+      "id": "LEY-18410-SEC",
+      "tipo_norma": "Ley",
+      "numero": "18.410 (SEC)",
+      "fecha_publicacion": "1985-09-13",
+      "fecha_entrada_vigor": "1985-09-13",
+      "fuente": "BCN LeyChile / Diario Oficial",
+      "tema_sst": "Fiscalización rubro combustibles",
+      "subtema": "Superintendencia de Electricidad y Combustibles (SEC)",
+      "descripcion": "Crea la Superintendencia de Electricidad y Combustibles (SEC), ente fiscalizador del cumplimiento de las leyes, reglamentos y normas relativas a electricidad, gas y combustibles líquidos en Chile. Es el organismo que verifica el cumplimiento del DS 160 (reglamento de combustibles líquidos) y demás normativa de seguridad del rubro, con facultades de fiscalización, sanción y medidas de seguridad.",
+      "aplica_a": "Todas las empresas del rubro combustibles líquidos, gas y electricidad, incluidos distribuidores, expendedores, transportistas de combustible y titulares de instalaciones de CL",
+      "obligaciones_clave": [
+        "Someterse a la fiscalización de la SEC",
+        "Obtener y mantener las autorizaciones/certificaciones exigidas",
+        "Cumplir las normas técnicas y de seguridad SEC",
+        "Permitir inspecciones y entregar información requerida",
+        "Corregir observaciones y medidas de seguridad dispuestas por la SEC"
+      ],
+      "sanciones_potenciales": "Multas y medidas de seguridad de la SEC (suspensión de suministro, clausura, requerimientos) conforme a la Ley 18.410",
+      "estado_revision": "Vigente - Verificada en BCN LeyChile",
+      "acciones_requeridas": "Verificar vigencia de resoluciones/autorizaciones SEC de cada instalación y mantener al día requerimientos de fiscalización",
+      "enlace_oficial": "https://www.sec.cl",
+      "fecha_deteccion": "2026-08-23T18:00:00Z",
+      "fuente_deteccion": "BCN - LeyChile",
+      "palabras_clave": [
+        "SEC",
+        "Superintendencia",
+        "electricidad y combustibles",
+        "fiscalización",
+        "combustibles líquidos"
+      ],
+      "relevancia_score": 8.0,
+      "aplica_desde_trabajadores": 1,
+      "detalle_umbral": "Por ser empresa del rubro combustibles/electricidad/gas, no por n° de trabajadores."
     },
     {
       "id": "DS-18-2020-TELETRABAJO",
@@ -161,8 +415,15 @@
       "enlace_oficial": "https://www.bcn.cl/leychile/navegar?idNorma=1147206",
       "fecha_deteccion": "2026-08-23T17:10:00Z",
       "fuente_deteccion": "BCN - LeyChile",
-      "palabras_clave": ["SST teletrabajo", "puesto de trabajo domicilio", "accidente de trayecto", "elementos de protección"],
-      "relevancia_score": 7.5
+      "palabras_clave": [
+        "SST teletrabajo",
+        "puesto de trabajo domicilio",
+        "accidente de trayecto",
+        "elementos de protección"
+      ],
+      "relevancia_score": 7.5,
+      "aplica_desde_trabajadores": 1,
+      "detalle_umbral": "Si existen teletrabajadores (independiente del número)."
     },
     {
       "id": "LEY-20001-CARGA",
@@ -187,8 +448,16 @@
       "enlace_oficial": "https://www.bcn.cl/leychile/navegar?idNorma=235279",
       "fecha_deteccion": "2026-08-23T17:10:00Z",
       "fuente_deteccion": "BCN - LeyChile",
-      "palabras_clave": ["peso máximo", "carga humana", "manipulación manual", "ergonomía", "musculoesquelético"],
-      "relevancia_score": 7.0
+      "palabras_clave": [
+        "peso máximo",
+        "carga humana",
+        "manipulación manual",
+        "ergonomía",
+        "musculoesquelético"
+      ],
+      "relevancia_score": 7.0,
+      "aplica_desde_trabajadores": 1,
+      "detalle_umbral": "Donde se realice manejo manual de cargas (independiente del número)."
     },
     {
       "id": "LEY-21327-DT",
@@ -212,8 +481,15 @@
       "enlace_oficial": "https://www.bcn.cl/leychile/navegar?idNorma=1158983",
       "fecha_deteccion": "2026-08-23T17:10:00Z",
       "fuente_deteccion": "BCN - LeyChile",
-      "palabras_clave": ["Dirección del Trabajo", "fiscalización", "inspectores", "mediación laboral"],
-      "relevancia_score": 5.5
+      "palabras_clave": [
+        "Dirección del Trabajo",
+        "fiscalización",
+        "inspectores",
+        "mediación laboral"
+      ],
+      "relevancia_score": 5.5,
+      "aplica_desde_trabajadores": 1,
+      "detalle_umbral": "Todo empleador sujeto a fiscalización DT."
     },
     {
       "id": "LEY-21342-COVID",
@@ -237,8 +513,15 @@
       "enlace_oficial": "https://www.bcn.cl/leychile/navegar?idNorma=1160443",
       "fecha_deteccion": "2026-08-23T17:10:00Z",
       "fuente_deteccion": "BCN - LeyChile",
-      "palabras_clave": ["protocolo sanitario", "COVID-19", "retorno al trabajo", "seguridad sanitaria"],
-      "relevancia_score": 5.0
+      "palabras_clave": [
+        "protocolo sanitario",
+        "COVID-19",
+        "retorno al trabajo",
+        "seguridad sanitaria"
+      ],
+      "relevancia_score": 5.0,
+      "aplica_desde_trabajadores": 1,
+      "detalle_umbral": "Contexto sanitario; todo empleador cuando exista alerta sanitaria."
     },
     {
       "id": "DS-40-1969-DEROGADO",
@@ -260,8 +543,15 @@
       "enlace_oficial": "https://www.bcn.cl/leychile/navegar?idNorma=1041130",
       "fecha_deteccion": "2026-08-23T17:10:00Z",
       "fuente_deteccion": "BCN - LeyChile",
-      "palabras_clave": ["prevención de riesgos profesionales", "derogado", "DS 40", "referencia histórica"],
-      "relevancia_score": 2.0
+      "palabras_clave": [
+        "prevención de riesgos profesionales",
+        "derogado",
+        "DS 40",
+        "referencia histórica"
+      ],
+      "relevancia_score": 2.0,
+      "aplica_desde_trabajadores": null,
+      "detalle_umbral": "Referencia histórica."
     },
     {
       "id": "DS-54-1969-DEROGADO",
@@ -283,34 +573,15 @@
       "enlace_oficial": "https://www.bcn.cl/leychile/navegar?idNorma=8336",
       "fecha_deteccion": "2026-08-23T17:10:00Z",
       "fuente_deteccion": "BCN - LeyChile",
-      "palabras_clave": ["comités paritarios", "derogado", "DS 54", "referencia histórica"],
-      "relevancia_score": 2.0
-    },
-    {
-      "id": "SUSESO-2026-08-18-001",
-      "tipo_norma": "Resolución o Jornada",
-      "numero": null,
-      "fecha_publicacion": "2026-08-18",
-      "fecha_entrada_vigor": null,
-      "fuente": "SUSESO",
-      "tema_sst": "Participación y capacitación",
-      "subtema": "Comités Paritarios de Seguridad y Salud en el Trabajo",
-      "descripcion": "SUSESO inaugura Jornada Nacional para Comités Paritarios, promoviendo la formación, fortalecimiento y buenas prácticas de los comités paritarios en las empresas chilenses.",
-      "aplica_a": "Todos los empleadores que deben tener comité paritario según ley (generalmente 10 o más trabajadores)",
-      "obligaciones_clave": [
-        "Facilitar la formación de miembros del comité paritario",
-        "Permitir tiempo remunerado para participación en actividades de capacitación",
-        "Proveer recursos necesarios para el funcionamiento del comité",
-        "Considerar las recomendaciones del comité en la gestión de riesgos"
+      "palabras_clave": [
+        "comités paritarios",
+        "derogado",
+        "DS 54",
+        "referencia histórica"
       ],
-      "sanciones_potenciales": "Multas por incumplimiento de normas sobre comités paritarios (según Ley 16.744)",
-      "estado_revision": "Nuevo - Pendiente de análisis detallado",
-      "acciones_requeridas": "Verificar existencia y funcionamiento de comité paritario, planificar capacitación anual",
-      "enlace_oficial": "https://www.suseso.gob.cl/601/w3-channel.html",
-      "fecha_deteccion": "2026-08-23T10:30:00Z",
-      "fuente_deteccion": "SUSESO - Sección Noticias",
-      "palabras_clave": ["comités paritarios", "participación trabajadores", "capacitación SST"],
-      "relevancia_score": 8.0
+      "relevancia_score": 2.0,
+      "aplica_desde_trabajadores": null,
+      "detalle_umbral": "Referencia histórica."
     }
   ],
   "historial_completo": [
@@ -337,16 +608,20 @@
       "enlace_oficial": "https://www.suseso.gob.cl/601/w3-channel.html",
       "fecha_deteccion": "2026-08-23T10:30:00Z",
       "fuente_deteccion": "SUSESO - Sección Noticias",
-      "palabras_clave": ["comités paritarios", "participación trabajadores", "capacitación SST"],
+      "palabras_clave": [
+        "comités paritarios",
+        "participación trabajadores",
+        "capacitación SST"
+      ],
       "relevancia_score": 8.0
     }
   ],
   "metadata": {
-    "ultima_actualizacion": "2026-08-23T17:20:00Z",
-    "total_normas_activas": 10,
+    "ultima_actualizacion": "2026-08-23T18:05:00Z",
+    "total_normas_activas": 15,
     "nuevas_detecciones_hoy": 10,
     "fuentes_monitoreadas": 3,
-    "version_matriz": "2.0",
-    "nota": "Matriz ampliada con normativa vigente SST chilena desde BCN LeyChile (10 normas vigentes + 2 derogadas de referencia). Diario Oficial revisado 18-22 ago 2026 sin publicaciones SST nuevas."
+    "version_matriz": "2.2",
+    "nota": "Añadidas 4 normas de rubro combustibles (DS 160/2009, DS 26/2025 tanques doble pared, DS 148/2003 residuos peligrosos, Ley 18.410 SEC)."
   }
 }
