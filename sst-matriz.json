@@ -34,7 +34,9 @@
       ],
       "relevancia_score": 10.0,
       "aplica_desde_trabajadores": 1,
-      "detalle_umbral": "Seguro y denuncia: todo empleador (1+ colaborador). Comité Paritario: más de 25 trabajadores (art. 67). Departamento de Prevención de Riesgos: más de 100 trabajadores (art. 65)."
+      "detalle_umbral": "Seguro y denuncia: todo empleador (1+ colaborador). Comité Paritario: más de 25 trabajadores (art. 67). Departamento de Prevención de Riesgos: más de 100 trabajadores (art. 65).",
+      "estado_cumplimiento": "en_proceso",
+      "porcentaje_cumplimiento": 60
     },
     {
       "id": "DS-44-2024",
@@ -72,7 +74,9 @@
       ],
       "relevancia_score": 10.0,
       "aplica_desde_trabajadores": 1,
-      "detalle_umbral": "Sistema de gestión preventiva: todos. Comité paritario: >25 trabajadores por centro de trabajo. Departamento de prevención: >100 trabajadores. Coordinación preventiva: empleador mandante con contratistas."
+      "detalle_umbral": "Sistema de gestión preventiva: todos. Comité paritario: >25 trabajadores por centro de trabajo. Departamento de prevención: >100 trabajadores. Coordinación preventiva: empleador mandante con contratistas.",
+      "estado_cumplimiento": "en_proceso",
+      "porcentaje_cumplimiento": 60
     },
     {
       "id": "DS-160-2009-COMB",
@@ -109,7 +113,9 @@
       ],
       "relevancia_score": 10.0,
       "aplica_desde_trabajadores": 1,
-      "detalle_umbral": "Por instalación o empresa del rubro combustibles (no por n° de trabajadores)."
+      "detalle_umbral": "Por instalación o empresa del rubro combustibles (no por n° de trabajadores).",
+      "estado_cumplimiento": "en_proceso",
+      "porcentaje_cumplimiento": 60
     },
     {
       "id": "DS-594-1999",
@@ -146,7 +152,9 @@
       ],
       "relevancia_score": 9.5,
       "aplica_desde_trabajadores": 1,
-      "detalle_umbral": "Todo lugar de trabajo, sin mínimo de trabajadores."
+      "detalle_umbral": "Todo lugar de trabajo, sin mínimo de trabajadores.",
+      "estado_cumplimiento": "en_proceso",
+      "porcentaje_cumplimiento": 60
     },
     {
       "id": "LEY-21643-KARIN",
@@ -183,7 +191,9 @@
       ],
       "relevancia_score": 9.5,
       "aplica_desde_trabajadores": 1,
-      "detalle_umbral": "Todo empleador (privado y público). Protocolo incorporado al RIOHS en empresas de 10+ (RIOHS obligatorio)."
+      "detalle_umbral": "Todo empleador (privado y público). Protocolo incorporado al RIOHS en empresas de 10+ (RIOHS obligatorio).",
+      "estado_cumplimiento": "en_proceso",
+      "porcentaje_cumplimiento": 60
     },
     {
       "id": "DS-26-2025-COMB",
@@ -217,7 +227,9 @@
       ],
       "relevancia_score": 9.5,
       "aplica_desde_trabajadores": 1,
-      "detalle_umbral": "Por instalación del rubro combustibles con tanques de almacenamiento, no por n° de trabajadores."
+      "detalle_umbral": "Por instalación del rubro combustibles con tanques de almacenamiento, no por n° de trabajadores.",
+      "estado_cumplimiento": "en_proceso",
+      "porcentaje_cumplimiento": 60
     },
     {
       "id": "CT-RIOHS-ART153",
@@ -251,7 +263,9 @@
       ],
       "relevancia_score": 9.0,
       "aplica_desde_trabajadores": 10,
-      "detalle_umbral": "Centros con 10+ trabajadores."
+      "detalle_umbral": "Centros con 10+ trabajadores.",
+      "estado_cumplimiento": "implementado",
+      "porcentaje_cumplimiento": 100
     },
     {
       "id": "DS-148-2003-RESIDUOS",
@@ -287,7 +301,9 @@
       ],
       "relevancia_score": 8.5,
       "aplica_desde_trabajadores": 1,
-      "detalle_umbral": "Por generación de residuos peligrosos, no por n° de trabajadores."
+      "detalle_umbral": "Por generación de residuos peligrosos, no por n° de trabajadores.",
+      "estado_cumplimiento": "implementado",
+      "porcentaje_cumplimiento": 100
     },
     {
       "id": "LEY-21220-TELETRABAJO",
@@ -322,7 +338,9 @@
       ],
       "relevancia_score": 8.0,
       "aplica_desde_trabajadores": 1,
-      "detalle_umbral": "Si existen trabajadores en teletrabajo/distancia (independiente del número)."
+      "detalle_umbral": "Si existen trabajadores en teletrabajo/distancia (independiente del número).",
+      "estado_cumplimiento": "implementado",
+      "porcentaje_cumplimiento": 100
     },
     {
       "id": "SUSESO-2026-08-18-001",
@@ -354,7 +372,9 @@
       ],
       "relevancia_score": 8.0,
       "aplica_desde_trabajadores": 25,
-      "detalle_umbral": "Comités paritarios (empresas >25 trabajadores)."
+      "detalle_umbral": "Comités paritarios (empresas >25 trabajadores).",
+      "estado_cumplimiento": "implementado",
+      "porcentaje_cumplimiento": 100
     },
     {
       "id": "LEY-18410-SEC",
@@ -389,7 +409,9 @@
       ],
       "relevancia_score": 8.0,
       "aplica_desde_trabajadores": 1,
-      "detalle_umbral": "Por ser empresa del rubro combustibles/electricidad/gas, no por n° de trabajadores."
+      "detalle_umbral": "Por ser empresa del rubro combustibles/electricidad/gas, no por n° de trabajadores.",
+      "estado_cumplimiento": "en_proceso",
+      "porcentaje_cumplimiento": 60
     },
     {
       "id": "DS-18-2020-TELETRABAJO",
@@ -423,7 +445,9 @@
       ],
       "relevancia_score": 7.5,
       "aplica_desde_trabajadores": 1,
-      "detalle_umbral": "Si existen teletrabajadores (independiente del número)."
+      "detalle_umbral": "Si existen teletrabajadores (independiente del número).",
+      "estado_cumplimiento": "implementado",
+      "porcentaje_cumplimiento": 100
     },
     {
       "id": "LEY-20001-CARGA",
@@ -457,7 +481,9 @@
       ],
       "relevancia_score": 7.0,
       "aplica_desde_trabajadores": 1,
-      "detalle_umbral": "Donde se realice manejo manual de cargas (independiente del número)."
+      "detalle_umbral": "Donde se realice manejo manual de cargas (independiente del número).",
+      "estado_cumplimiento": "implementado",
+      "porcentaje_cumplimiento": 100
     },
     {
       "id": "LEY-21327-DT",
@@ -489,7 +515,9 @@
       ],
       "relevancia_score": 5.5,
       "aplica_desde_trabajadores": 1,
-      "detalle_umbral": "Todo empleador sujeto a fiscalización DT."
+      "detalle_umbral": "Todo empleador sujeto a fiscalización DT.",
+      "estado_cumplimiento": "implementado",
+      "porcentaje_cumplimiento": 100
     },
     {
       "id": "LEY-21342-COVID",
@@ -521,7 +549,9 @@
       ],
       "relevancia_score": 5.0,
       "aplica_desde_trabajadores": 1,
-      "detalle_umbral": "Contexto sanitario; todo empleador cuando exista alerta sanitaria."
+      "detalle_umbral": "Contexto sanitario; todo empleador cuando exista alerta sanitaria.",
+      "estado_cumplimiento": "implementado",
+      "porcentaje_cumplimiento": 100
     },
     {
       "id": "DS-40-1969-DEROGADO",
@@ -551,7 +581,9 @@
       ],
       "relevancia_score": 2.0,
       "aplica_desde_trabajadores": null,
-      "detalle_umbral": "Referencia histórica."
+      "detalle_umbral": "Referencia histórica.",
+      "estado_cumplimiento": "no_aplica",
+      "porcentaje_cumplimiento": null
     },
     {
       "id": "DS-54-1969-DEROGADO",
@@ -581,7 +613,9 @@
       ],
       "relevancia_score": 2.0,
       "aplica_desde_trabajadores": null,
-      "detalle_umbral": "Referencia histórica."
+      "detalle_umbral": "Referencia histórica.",
+      "estado_cumplimiento": "no_aplica",
+      "porcentaje_cumplimiento": null
     }
   ],
   "historial_completo": [
@@ -621,7 +655,15 @@
     "total_normas_activas": 15,
     "nuevas_detecciones_hoy": 10,
     "fuentes_monitoreadas": 3,
-    "version_matriz": "2.2",
-    "nota": "Añadidas 4 normas de rubro combustibles (DS 160/2009, DS 26/2025 tanques doble pared, DS 148/2003 residuos peligrosos, Ley 18.410 SEC)."
+    "version_matriz": "2.3",
+    "nota": "Añadidas 4 normas de rubro combustibles (DS 160/2009, DS 26/2025 tanques doble pared, DS 148/2003 residuos peligrosos, Ley 18.410 SEC).",
+    "razones_sociales": 3,
+    "colaboradores_totales": 2800,
+    "colaboradores_por_rrss": {
+      "RRSS A": 150,
+      "RRSS B": 650,
+      "RRSS C": 2000
+    },
+    "rubro": "Combustibles y derivados"
   }
 }

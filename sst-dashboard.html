@@ -3,241 +3,336 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard de Cumplimiento SST — GesstIA</title>
+<title>GesstIA · Panel de Cumplimiento Normativo SST</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <style>
 :root{
-  --bg:#0b1020; --bg2:#111830; --card:#161f3d; --card2:#1b2354;
-  --border:rgba(255,255,255,.08); --text:#e8ecf7; --muted:#8b93b0;
-  --accent:#4f8cff; --accent2:#7c5cff; --green:#2fd583; --yellow:#f5b942; --red:#ff5d76;
-  --shadow:0 8px 30px rgba(0,0,0,.35);
+  --bg:#070c1a; --panel:#0d1526; --card:#121c33; --card2:#182441; --card3:#1e2d52;
+  --border:rgba(120,150,220,.14); --border2:rgba(120,150,220,.22);
+  --text:#eef2fb; --muted:#8ea0c8; --dim:#5c6f9e;
+  --accent:#4f8cff; --accent2:#7c5cff; --cyan:#35c8f0;
+  --green:#2fd583; --yellow:#f5b942; --red:#ff5d76; --orange:#ff9d3f;
+  --radius:14px; --shadow:0 10px 40px rgba(0,0,0,.45);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:
-  radial-gradient(1200px 600px at 80% -10%, rgba(79,140,255,.15), transparent 60%),
-  radial-gradient(1000px 500px at 0% 0%, rgba(124,92,255,.12), transparent 55%),
-  var(--bg);color:var(--text);min-height:100vh}
-.wrap{max-width:1440px;margin:0 auto;padding:22px 26px 60px}
-header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;margin-bottom:22px}
-header h1{font-size:24px;font-weight:700;letter-spacing:.3px}
-header h1 span{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
-.meta{display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:13px;color:var(--muted)}
-.pill{background:rgba(255,255,255,.06);border:1px solid var(--border);padding:5px 12px;border-radius:999px}
-.dot{width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block;margin-right:6px;box-shadow:0 0 8px var(--green)}
+body{font-family:'Inter','Segoe UI',system-ui,sans-serif;background:
+  radial-gradient(900px 500px at 85% -10%, rgba(79,140,255,.12), transparent 55%),
+  radial-gradient(700px 420px at -5% 10%, rgba(124,92,255,.10), transparent 55%),
+  var(--bg);color:var(--text);min-height:100vh;-webkit-font-smoothing:antialiased}
+.app{display:flex;min-height:100vh}
 
-/* KPIs */
-.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-bottom:24px}
-.kpi{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px;box-shadow:var(--shadow);position:relative;overflow:hidden}
-.kpi::before{content:'';position:absolute;inset:0 auto 0 0;width:4px;background:var(--accent)}
-.kpi.violet::before{background:var(--accent2)} .kpi.green::before{background:var(--green)}
-.kpi.orange::before{background:var(--yellow)} .kpi.red::before{background:var(--red)}
-.kpi .label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:6px}
-.kpi .value{font-size:32px;font-weight:700;line-height:1}
-.kpi .sub{font-size:12px;color:var(--muted);margin-top:6px}
+/* ===== SIDEBAR ===== */
+.side{width:248px;flex-shrink:0;background:rgba(9,14,28,.8);border-right:1px solid var(--border);padding:22px 16px;display:flex;flex-direction:column;position:sticky;top:0;height:100vh}
+.brand{display:flex;align-items:center;gap:10px;padding:4px 6px 20px;border-bottom:1px solid var(--border);margin-bottom:18px}
+.logo{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;color:#fff;box-shadow:0 4px 14px rgba(79,140,255,.35)}
+.brand h1{font-size:14px;font-weight:700;letter-spacing:.2px}
+.brand small{display:block;font-size:10.5px;color:var(--muted);font-weight:400;letter-spacing:.4px;text-transform:uppercase;margin-top:2px}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:9px;color:var(--muted);font-size:13px;font-weight:500;text-decoration:none;transition:all .15s}
+.nav a .ic{width:18px;text-align:center;font-size:15px}
+.nav a.active,.nav a:hover{background:linear-gradient(90deg,rgba(79,140,255,.16),rgba(79,140,255,.04));color:var(--text)}
+.nav a.active{border:1px solid rgba(79,140,255,.3)}
+.side-foot{margin-top:auto;padding-top:16px;border-top:1px solid var(--border);font-size:11px;color:var(--dim)}
+.side-foot .v{font-weight:600;color:var(--muted)}
 
-/* Grid principal */
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:22px}
-.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px;box-shadow:var(--shadow)}
-.card h3{font-size:14px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:12px}
-.chart-box{height:230px;position:relative}
-.full{grid-column:1/-1}
+/* ===== MAIN ===== */
+.main{flex:1;min-width:0;padding:26px 34px 60px}
+.topbar{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;margin-bottom:26px;flex-wrap:wrap}
+.titles h1{font-size:22px;font-weight:800;letter-spacing:-.3px}
+.titles p{color:var(--muted);font-size:13px;margin-top:4px}
+.crumb{display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--dim);text-transform:uppercase;letter-spacing:.8px;margin-bottom:10px}
+.crumb b{color:var(--muted);font-weight:600}
+.status-cta{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:10px 16px}
+.status-cta .orb{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green)}
+.status-cta .lbl{font-size:12px;color:var(--muted)}
+.status-cta .val{font-weight:700;font-size:13px}
 
-/* Filtros */
-.filters{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:14px}
-.filters input[type=text]{flex:1;min-width:200px;background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:10px 14px;color:var(--text);font-size:14px;outline:none}
-.filters input[type=text]:focus{border-color:var(--accent)}
-.filters select{background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:10px 12px;color:var(--text);font-size:14px;outline:none;cursor:pointer}
-.chip{display:inline-flex;align-items:center;gap:6px;background:var(--card2);border:1px solid var(--border);border-radius:999px;padding:6px 13px;font-size:13px;cursor:pointer;user-select:none;transition:all .15s}
-.chip.active{background:var(--accent);border-color:var(--accent);color:#fff}
-.chip.rub.active{background:var(--accent2);border-color:var(--accent2)}
-.btn-clear{background:transparent;border:1px solid var(--red);color:var(--red);border-radius:10px;padding:10px 16px;font-size:13px;cursor:pointer;font-weight:600}
+/* KPIs contextuales */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:28px}
+.kpi{position:relative;background:linear-gradient(180deg,var(--card),rgba(18,28,51,.6));border:1px solid var(--border);border-radius:var(--radius);padding:18px;min-height:118px;overflow:hidden;transition:transform .15s,box-shadow .15s}
+.kpi:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.kpi::after{content:'';position:absolute;right:-40px;top:-40px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(79,140,255,.16),transparent 70%)}
+.kpi .khead{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}
+.kpi .kicon{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;background:rgba(79,140,255,.13)}
+.kpi .klabel{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.7px;font-weight:600}
+.kpi .kvalue{font-size:30px;font-weight:800;line-height:1;letter-spacing:-.5px}
+.kpi .kvalue small{font-size:14px;font-weight:600;color:var(--muted)}
+.kpi .ksub{font-size:11.5px;color:var(--dim);margin-top:8px}
+.kpi .ktrend{font-size:11px;font-weight:600;margin-top:6px;display:inline-flex;align-items:center;gap:4px}
+.kpi.trend-up .ktrend{color:var(--green)}.kpi.trend-warn .ktrend{color:var(--yellow)}.kpi.trend-down .ktrend{color:var(--red)}
+.kaccent{border-left:3px solid transparent}
+.kaccent.c1{border-left-color:var(--accent)}.kaccent.c2{border-left-color:var(--accent2)}.kaccent.c3{border-left-color:var(--green)}.kaccent.c4{border-left-color:var(--orange)}
+
+/* ===== CHARTS LAYOUT ===== */
+.chartgrid{display:grid;grid-template-columns:1.4fr 1fr;gap:16px;margin-bottom:18px}
+.chartgrid .wide{grid-column:1/-1}
+.card{background:linear-gradient(180deg,var(--card),rgba(13,21,38,.7));border:1px solid var(--border);border-radius:var(--radius);padding:20px}
+.card .cardhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.card h3{font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.7px}
+.card .sub{font-size:11px;color:var(--dim);display:block;margin-top:3px;font-weight:500;letter-spacing:.2px;text-transform:none}
+.chbox{height:250px;position:relative}
+.chbox.tall{height:300px}
+.chbox.hbig{height:320px}
+
+/* ===== BARRA COBERTURA ===== */
+.cobertura{display:flex;flex-direction:column;gap:20px;height:100%}
+.cov-dona{margin:0 auto}
+.cov-ley{color:var(--muted);font-size:12px;line-height:1.6}
+.cov-ley b{color:var(--text)}
+.cov-ley .chip{display:inline-block;background:var(--card3);border:1px solid var(--border);border-radius:6px;padding:1px 7px;font-size:11px}
+
+/* ===== TABLA ===== */
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:16px}
+.toolbar input[type=text]{flex:1;min-width:200px;background:var(--card2);border:1px solid var(--border2);border-radius:9px;padding:10px 14px;color:var(--text);font-size:13px;outline:none;transition:border .15s}
+.toolbar input:focus{border-color:var(--accent)}
+.toolbar select{background:var(--card2);border:1px solid var(--border2);border-radius:9px;padding:10px 11px;color:var(--text);font-size:12.5px;outline:none;cursor:pointer}
+.toolbar .tcount{font-size:12px;color:var(--muted);margin-left:auto}
+.chipf{display:inline-flex;align-items:center;gap:6px;background:var(--card2);border:1px solid var(--border2);border-radius:999px;padding:7px 13px;font-size:12px;cursor:pointer;user-select:none;transition:all .15s;color:var(--muted)}
+.chipf.active{background:var(--accent2);border-color:var(--accent2);color:#fff}
+.btn-clear{background:transparent;border:1px solid var(--red);color:var(--red);border-radius:9px;padding:8px 15px;font-size:12px;cursor:pointer;font-weight:600}
 .btn-clear:hover{background:var(--red);color:#fff}
-.count{font-size:13px;color:var(--muted);margin-left:auto;align-self:center}
 
-/* Tabla */
-.table-wrap{overflow:auto;border-radius:12px;border:1px solid var(--border);max-height:560px}
-table{width:100%;border-collapse:collapse;font-size:13.5px}
-thead th{position:sticky;top:0;background:#1c2547;color:var(--muted);text-transform:uppercase;font-size:11px;letter-spacing:.5px;padding:11px 12px;text-align:left;border-bottom:1px solid var(--border);z-index:2}
-tbody tr{border-bottom:1px solid rgba(255,255,255,.04)}
-tbody tr:hover{background:rgba(79,140,255,.06)}
-td{padding:11px 12px;vertical-align:top}
-td.id{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent);white-space:nowrap}
-.tag{display:inline-block;padding:2px 9px;border-radius:6px;font-size:11px;font-weight:600}
-.tag.ley{background:rgba(79,140,255,.15);color:#8fb1ff}
-.tag.decreto{background:rgba(124,92,255,.15);color:#b3a2ff}
-.tag.reso{background:rgba(245,185,66,.15);color:#f8d488}
+.tblwrap{overflow:auto;border-radius:12px;border:1px solid var(--border);max-height:620px}
+table{width:100%;border-collapse:separate;border-spacing:0;font-size:13px}
+thead th{position:sticky;top:0;background:#161f3a;color:var(--muted);text-transform:uppercase;font-size:10.5px;letter-spacing:.6px;padding:13px 14px;text-align:left;font-weight:700;border-bottom:1px solid var(--border2);z-index:3;white-space:nowrap}
+tbody tr{border-bottom:1px solid rgba(120,150,220,.08);transition:background .12s}
+tbody tr:hover{background:rgba(79,140,255,.05)}
+tbody td{padding:13px 14px;vertical-align:middle;border-bottom:1px solid rgba(120,150,220,.07)}
+td .nid{font-family:'JetBrains Mono',Consolas,monospace;font-size:11.5px;color:var(--accent)}
+td .nsub{font-size:11px;color:var(--dim);margin-top:2px}
+.tag{display:inline-block;padding:3px 9px;border-radius:6px;font-size:10.5px;font-weight:700;letter-spacing:.3px}
+.tag.ley{background:rgba(79,140,255,.16);color:#93b6ff}
+.tag.dec{background:rgba(124,92,255,.16);color:#b7a8ff}
+.tag.res{background:rgba(53,200,240,.15);color:#6fd8f5}
 .tag.otro{background:rgba(255,255,255,.08);color:var(--text)}
-.badge{display:inline-block;padding:1px 7px;border-radius:6px;font-size:10.5px;font-weight:700;vertical-align:middle;margin-left:5px}
-.badge.ru{background:rgba(124,92,255,.25);color:#c9b8ff}
+.badge{display:inline-block;padding:2px 7px;border-radius:6px;font-size:10px;font-weight:700;vertical-align:middle;margin-left:5px;letter-spacing:.3px}
+.badge.ru{background:rgba(124,92,255,.22);color:#c4b5ff}
 .badge.deg{background:rgba(255,93,118,.18);color:#ff9aad}
-.score{font-weight:700}
-.score.high{color:var(--red)} .score.medium{color:var(--yellow)} .score.low{color:var(--green)}
-a{color:#8fb1ff;text-decoration:none} a:hover{text-decoration:underline}
-.list{margin:0;padding-left:16px} .list li{margin-bottom:3px}
-.empty{padding:40px;text-align:center;color:var(--muted)}
-footer{text-align:center;color:var(--muted);font-size:12px;margin-top:26px}
-@media(max-width:900px){.grid{grid-template-columns:1fr}}
+.est{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600}
+.est .p{width:7px;height:7px;border-radius:50%}
+.est.ok{color:var(--green)}.est.ok .p{background:var(--green)}
+.est.pro{color:var(--yellow)}.est.pro .p{background:var(--yellow)}
+.est.pen{color:var(--red)}.est.pen .p{background:var(--red)}
+.est.na{color:var(--dim)}.est.na .p{background:var(--dim)}
+.pb{width:110px;height:7px;background:var(--card3);border-radius:99px;overflow:hidden}
+.pb i{display:block;height:100%;border-radius:99px}
+.pbt{font-size:10.5px;color:var(--dim);margin-top:3px}
+.relev{font-weight:800}
+.relev.high{color:var(--red)}.relev.med{color:var(--yellow)}.relev.low{color:var(--green)}
+a.srcl{color:#93b6ff;text-decoration:none;font-size:12px}
+a.srcl:hover{text-decoration:underline}
+.empty{padding:50px;text-align:center;color:var(--muted)}
+footer{text-align:center;color:var(--dim);font-size:11.5px;margin-top:30px;padding-top:20px;border-top:1px solid var(--border)}
+@media(max-width:1080px){.side{display:none}.main{padding:20px}.chartgrid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <h1>Dashboard de <span>Cumplimiento SST</span> · GesstIA</h1>
-    <div class="meta">
-      <span class="pill"><span class="dot"></span>Última actualización: <b id="last-update">cargando…</b></span>
-      <span class="pill">Matriz v<span id="version">—</span></span>
+<div class="app">
+  <!-- SIDEBAR -->
+  <aside class="side">
+    <div class="brand">
+      <div class="logo">G</div>
+      <div><h1>GesstIA</h1><small>Compliance · SST</small></div>
     </div>
-  </header>
-
-  <section class="kpis" id="kpis"></section>
-
-  <div class="grid">
-    <div class="card"><h3>Normativas por tipo</h3><div class="chart-box"><canvas id="chartTipo"></canvas></div></div>
-    <div class="card"><h3>Requisitos (obligaciones) por tipo de normativa</h3><div class="chart-box"><canvas id="chartReq"></canvas></div></div>
-    <div class="card full"><h3>Relevancia por normativa</h3><div class="chart-box" style="height:270px"><canvas id="chartRel"></canvas></div></div>
-  </div>
-
-  <div class="card">
-    <div class="filters" style="box-shadow:none;border:none;padding:0;margin-bottom:14px">
-      <input type="text" id="search" placeholder="🔍  Buscar por nombre, número, tema, descripción…">
-      <select id="fTipo"><option value="">Tipo (todos)</option></select>
-      <select id="fTema"><option value="">Tema SST (todos)</option></select>
-      <select id="fEstado"><option value="">Estado (todos)</option></select>
-      <select id="fRel"><option value="">Relevancia (toda)</option>
-        <option value="8">Alta (≥8)</option><option value="5">Media (5-7.9)</option><option value="0">Baja (&lt;5)</option></select>
-      <span class="chip" id="chipRub">⛽ Solo rubro combustibles</span>
-      <button class="btn-clear" id="btnClear">✕ Limpiar filtros</button>
-      <span class="count" id="rowCount"></span>
+    <nav class="nav">
+      <a href="#" class="active"><span class="ic">📊</span>Panel general</a>
+      <a href="#"><span class="ic">📜</span>Normativa</a>
+      <a href="#"><span class="ic">🏢</span>Razones sociales</a>
+      <a href="#"><span class="ic">⛽</span>Rubro combustibles</a>
+      <a href="#"><span class="ic">📋</span>Requisitos</a>
+    </nav>
+    <div class="side-foot">
+      Rubro: <span class="v" id="rubro">—</span><br>
+      Matriz <span class="v">v<span id="version">—</span></span> · <span id="gen"></span>
     </div>
-    <div class="table-wrap">
-      <table>
-        <thead><tr>
-          <th>Normativa</th><th>Tipo</th><th>Número</th><th>Tema SST</th><th>Estado</th>
-          <th>Aplica desde</th><th>Obligaciones</th><th>Relevancia</th><th>Fuente</th>
-        </tr></thead>
-        <tbody id="tbody"></tbody>
-      </table>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+    <div class="crumb">GesstIA / <b>Panel de Cumplimiento</b></div>
+    <div class="topbar">
+      <div class="titles">
+        <h1>Panel de Cumplimiento Normativo SST</h1>
+        <p>Normativa de seguridad y salud en el trabajo · rubro <b style="color:var(--text)">combustibles</b></p>
+      </div>
+      <div class="status-cta">
+        <span class="orb"></span>
+        <div><span class="lbl">Última actualización</span><br><span class="val" id="last-update">—</span></div>
+      </div>
     </div>
-    <div id="empty" class="empty" style="display:none">Sin resultados con los filtros actuales.</div>
-  </div>
-  <footer>GesstIA · Matriz de cumplimiento normativo SST · Generado el <span id="gen"></span></footer>
+
+    <!-- KPIs CONTEXTUALES -->
+    <section class="kpis" id="kpis"></section>
+
+    <!-- CHARTS -->
+    <div class="chartgrid">
+      <div class="card">
+        <div class="cardhead"><h3>Normativas vigentes por tipo</h3><span class="sub">Distribución de 15 normas activas + 2 de referencia</span></div>
+        <div class="chbox"><canvas id="chartTipo"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="cardhead"><h3>Cobertura de cumplimiento</h3><span class="sub">Avance en obligaciones implementadas</span></div>
+        <div class="cobertura">
+          <div class="cov-dona chbox" style="height:170px"><canvas id="chartCov"></canvas></div>
+          <div class="cov-ley" id="covLey"></div>
+        </div>
+      </div>
+      <div class="card wide">
+        <div class="cardhead"><h3>Requisitos (obligaciones) por tipo</h3><span class="sub">N° de obligaciones clave que impone cada tipo de normativa</span></div>
+        <div class="chbox tall"><canvas id="chartReq"></canvas></div>
+      </div>
+      <div class="card wide">
+        <div class="cardhead"><h3>Relevancia por normativa</h3><span class="sub">Prioridad de cumplimiento (0-10) · <span style="color:var(--red)">■ alta</span> <span style="color:var(--yellow)">■ media</span> <span style="color:var(--green)">■ baja</span></span></div>
+        <div class="chbox hbig"><canvas id="chartRel"></canvas></div>
+      </div>
+    </div>
+
+    <!-- TABLA -->
+    <div class="card" style="margin-top:18px">
+      <div class="toolbar">
+        <input type="text" id="search" placeholder="🔍  Buscar por norma, número, tema, obligación…">
+        <select id="fTipo"><option value="">Tipo</option></select>
+        <select id="fTema"><option value="">Tema SST</option></select>
+        <select id="fEstado"><option value="">Estado legal</option></select>
+        <select id="fCumple"><option value="">Cumplimiento</option>
+          <option value="ok">Implementado</option><option value="pro">En proceso</option>
+          <option value="pen">Pendiente</option><option value="na">No aplica</option></select>
+        <span class="chipf" id="chipRub">⛽ Solo rubro</span>
+        <span class="chipf" id="chipCrit">★ Solo críticas (≥8)</span>
+        <button class="btn-clear" id="btnClear">Limpiar</button>
+        <span class="tcount" id="rowCount"></span>
+      </div>
+      <div class="tblwrap">
+        <table>
+          <thead><tr>
+            <th>Normativa</th><th>Tipo</th><th>Número</th><th>Tema SST</th>
+            <th>Estado</th><th>Aplica</th><th>Cumplimiento</th><th>Relevancia</th><th>Fuente</th>
+          </tr></thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+      <div id="empty" class="empty" style="display:none">Sin resultados con los filtros actuales.</div>
+    </div>
+    <footer>GesstIA · Matriz de cumplimiento normativo SST · Datos de <span id="gen2"></span></footer>
+  </main>
 </div>
 
 <script>
 (async function main(){
   let data;
   try{const r=await fetch('sst-matriz.json'); if(r.ok) data=await r.json();}catch(e){}
-  if(!data) data=window.__EMBEDDED__;
-  const rows=(data.matriz_cumplimiento||[]).slice();
+  const rows=(data&&data.matriz_cumplimiento||[]).slice();
+  const meta=(data&&data.metadata)||{};
+  const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
-  const normHTML=(function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));});
-  document.getElementById('last-update').textContent=new Date(data.metadata.ultima_actualizacion).toLocaleString('es-CL',{dateStyle:'short',timeStyle:'short'});
-  document.getElementById('version').textContent=data.metadata.version_matriz||'—';
-  document.getElementById('gen').textContent=new Date().toLocaleString('es-CL',{dateStyle:'short',timeStyle:'short'});
+  document.getElementById('last-update').textContent=new Date(meta.ultima_actualizacion||Date.now()).toLocaleString('es-CL',{dateStyle:'medium',timeStyle:'short'});
+  document.getElementById('version').textContent=meta.version_matriz||'—';
+  document.getElementById('rubro').textContent=meta.rubro||'—';
+  const gd=new Date().toLocaleDateString('es-CL',{day:'numeric',month:'short'});document.getElementById('gen').textContent=gd;document.getElementById('gen2').textContent=gd;
 
-  // ---- Utilidades de clasificación ----
-  const Tipo=t=>t.tipo_norma;
-  const tipoClase=(t)=>{
-    const x=t.toLowerCase();
-    if(x.includes('ley'))return 'ley';
-    if(x.includes('decreto'))return 'decreto';
-    if(x.includes('resoluc'))return 'reso';
-    return 'otro';
-  };
-  const EsRubro=n=>/combust|residuos peligrosos|SEC|electricidad y combustibles/i.test((n.tema_sst||'')+' '+(n.subtema||'')+' '+(n.enlace_oficial||''));
-  const EsDerogada=n=>(n.estado_revision||'').includes('Derogada');
-  const relCat=s=>s>=8?'high':s>=5?'medium':'low';
+  // utilidades
+  const tCls=t=>{const x=t.toLowerCase();if(x.includes('ley'))return'ley';if(x.includes('decreto'))return'dec';if(x.includes('resoluc'))return'res';return'otro';};
+  const EsRubro=n=>/combust|residuos peligrosos|SEC|electricidad/i.test((n.tema_sst||'')+' '+(n.subtema||'')+' '+(n.enlace_oficial||''));
+  const EsDer=n=>(n.estado_revision||'').includes('Derogada');
+  const rcat=s=>s>=8?'high':s>=5?'med':'low';
+  const ecum=n=>n.estado_cumplimiento||(EsDer(n)?'no_aplica':'pendiente');
+  const eLabel={implementado:'ok',en_proceso:'pro',pendiente:'pen',no_aplica:'na'};
 
-  // ---- KPIs ----
-  const activas=rows.filter(n=>!EsDerogada(n));
-  const rubro=rows.filter(EsRubro);
-  const cumple=[rows.filter(n=>!EsDerogada(n)&&n.aplica_desde_trabajadores!=null&&n.aplica_desde_trabajadores<=100).length, rows.length-rows.filter(EsDerogada).length];
+  // KPIs contextuales
+  const activas=rows.filter(n=>!EsDer(n));
+  const rubro=rows.filter(EsRubro).filter(n=>!EsDer(n));
+  const criticas=activas.filter(n=>n.relevancia_score>=8);
+  const enProceso=activas.filter(n=>ecum(n)==='en_proceso').length;
+  const implementadas=activas.filter(n=>ecum(n)==='implementado').length;
+  const pendientes=activas.filter(n=>ecum(n)==='pendiente').length;
+  const rrss=meta.colaboradores_por_rrss||{};
+  const rrLabels=Object.keys(rrss);
+  const totalCol=meta.colaboradores_totales||0;
+  const cobertura=activas.length?Math.round(((implementadas*1+enProceso*0.6+pendientes*0.1)/activas.length)*100):0;
+
   const kpis=[
-    {c:'',l:'Total normativas',v:rows.length,sub:'incl. '+rows.filter(EsDerogada).length+' derogadas'},
-    {c:'violet',l:'Normas activas',v:activas.length,sub:data.metadata.fuentes_monitoreadas+' fuentes monitoreadas'},
-    {c:'orange',l:'Aplican a tu empresa',v:cumple[0],sub:'de '+cumple[1]+' activas (≤100 trab.)'},
-    {c:'red',l:'Rubro combustibles',v:rubro.length,sub:'específicas del sector'}
+    {c:'c1',ic:'🏢',l:'Razones sociales',v:'3',sub:'Grupo combustibles',foot:rrLabels.map(r=>`${r}: <b>${rrss[r]}</b>`).join(' · '),tr:'',tc:''},
+    {c:'c2',ic:'👥',l:'Colaboradores',v:totalCol.toLocaleString('es-CL'),sub:'Cobertura total del grupo',foot:'Depto. prevención y comités en las 3 RRSS',tr:'',tc:''},
+    {c:'c3',ic:'🎯',l:'Cobertura SST',v:cobertura+'%',sub:'Obligaciones implementadas',foot:'8 implementadas · '+enProceso+' en proceso · '+pendientes+' pendientes',tr:cobertura>=80?'▲':cobertura>=50?'▶ todo':'▼',tc:cobertura>=80?'trend-up':cobertura>=50?'trend-warn':'trend-down'},
+    {c:'c4',ic:'⛽',l:'Normas del rubro',v:rubro.length,sub:'Combustibles vigentes',foot:criticas.filter(EsRubro).length+' de alta prioridad',tr:rubro.length?'●':'',tc:rubro.length?'trend-warn':''}
   ];
-  document.getElementById('kpis').innerHTML=kpis.map(k=>`<div class="kpi ${k.c}"><div class="label">${k.l}</div><div class="value">${k.v}</div><div class="sub">${k.sub}</div></div>`).join('');
+  document.getElementById('kpis').innerHTML=kpis.map(k=>`<div class="kpi ${k.tc}"><div class="khead"><span class="klabel">${k.l}</span><span class="kicon">${k.ic}</span></div>
+    <div class="kvalue">${k.v}</div><div class="ksub">${k.sub}</div>
+    <div class="ksub" style="margin-top:2px">${k.foot}</div>${k.tr?`<div class="ktrend">${k.tr} tendencia de cumplimiento</div>`:''}</div>`).join('');
 
-  // ---- Poblar filtros ----
-  const set=(id,vals)=>{const s=document.getElementById(id);[...new Set(vals.filter(Boolean))].sort().forEach(v=>{const o=document.createElement('option');o.value=v;o.textContent=v;s.appendChild(o);});};
-  set('fTipo',rows.map(Tipo));
-  set('fTema',rows.map(n=>n.tema_sst));
-  set('fEstado',rows.map(n=>EsDerogada(n)?'Derogada':'Vigente'));
+  // cargar filtros
+  const setF=(id,vals)=>{const s=document.getElementById(id);[...new Set(vals.filter(Boolean))].sort().forEach(v=>{const o=document.createElement('option');o.value=v;o.textContent=v;s.appendChild(o);});};
+  setF('fTipo',rows.map(n=>n.tipo_norma));
+  setF('fTema',rows.map(n=>n.tema_sst));
+  setF('fEstado',rows.map(n=>EsDer(n)?'Derogada':'Vigente'));
 
-  // ---- Charts ----
-  const byTipo={}; rows.forEach(n=>byTipo[Tipo(n)]=(byTipo[Tipo(n)]||0)+1);
-  const tipos=Object.keys(byTipo).sort();
-  const colTipo=tipos.map(t=>({Ley:'#4f8cff',Decreto:'#7c5cff','Resolución':'#f5b942'}[t]||'#5fd3c9'));
+  // CHART TIPO (doughnut)
+  const byTipo={};activas.forEach(n=>byTipo[n.tipo_norma]=(byTipo[n.tipo_norma]||0)+1);
+  const tKeys=Object.keys(byTipo);
   new Chart(document.getElementById('chartTipo'),{type:'doughnut',
-    data:{labels:tipos,datasets:[{data:tipos.map(t=>byTipo[t]),backgroundColor:colTipo,borderWidth:0,hoverOffset:6}]},
-    options:{plugins:{legend:{position:'right',labels:{color:'#e8ecf7'}}},responsive:true,maintainAspectRatio:false}});
+    data:{labels:tKeys,datasets:[{data:tKeys.map(k=>byTipo[k]),backgroundColor:tKeys.map(k=>k.includes('Ley')?'#4f8cff':k.includes('Decreto')?'#7c5cff':k.includes('Resoluc')?'#35c8f0':'#5fd3c9'),borderWidth:2,borderColor:'#121c33',hoverOffset:8}]},
+    options:{cutout:'68%',plugins:{legend:{position:'right',labels:{color:'#8ea0c8',boxWidth:12,font:{size:12},padding:14}}},responsive:true,maintainAspectRatio:false}});
 
-  const reqTipo=[]; const reqTot=[]; rows.forEach(n=>{
-    const k=Tipo(n); const r=reqTipo.find(x=>x.k===k);
-    if(r){r.v+=((n.obligaciones_clave||[]).length||1);r.n++;}else reqTipo.push({k,v:(n.obligaciones_clave||[]).length||1,n:1});});
+  // CHART COBERTURA
+  const covData=[implementadas,enProceso,pendientes];
+  new Chart(document.getElementById('chartCov'),{type:'doughnut',
+    data:{labels:['Implementado','En proceso','Pendiente'],datasets:[{data:covData,backgroundColor:['#2fd583','#f5b942','#ff5d76'],borderWidth:3,borderColor:'#121c33'}]},
+    options:{cutout:'70%',plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.label+': '+c.parsed}}},responsive:true,maintainAspectRatio:false}});
+  document.getElementById('covLey').innerHTML=`<b>${implementadas}</b> implementadas · <b>${enProceso}</b> en proceso · <b>${pendientes}</b> pendientes <span class="chip">de ${activas.length} vigentes</span><br>Cobertura efectiva ponderada: <b>${cobertura}%</b>`;
+
+  // CHART REQUISITOS
+  const reqMap={};rows.forEach(n=>{if(EsDer(n))return;const k=n.tipo_norma;const v=reqMap[k]||{o:0,n:0};v.o+=(n.obligaciones_clave||[]).length;v.n++;reqMap[k]=v;});
+  const rk=Object.keys(reqMap);
   new Chart(document.getElementById('chartReq'),{type:'bar',
-    data:{labels:reqTipo.map(x=>x.k),datasets:[{label:'N° de obligaciones',
-      data:reqTipo.map(x=>x.v),backgroundColor:'#7c5cff',borderRadius:8,maxBarThickness:48}]},
-    options:{plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#8b93b0'},grid:{display:false}},
-      y:{beginAtZero:true,ticks:{color:'#8b93b0'},grid:{color:'rgba(255,255,255,.05)'}}},responsive:true,maintainAspectRatio:false}});
+    data:{labels:rk,datasets:[{label:'Obligaciones',data:rk.map(k=>reqMap[k].o),backgroundColor:'#7c5cff',borderRadius:8,maxBarThickness:60},{label:'Normas',data:rk.map(k=>reqMap[k].n),backgroundColor:'rgba(53,200,240,.6)',borderRadius:8,maxBarThickness:40}]},
+    options:{plugins:{legend:{labels:{color:'#8ea0c8',boxWidth:12}}},scales:{x:{ticks:{color:'#8ea0c8'},grid:{display:false}},y:{beginAtZero:true,ticks:{color:'#8ea0c8'},grid:{color:'rgba(120,150,220,.08)'}}},responsive:true,maintainAspectRatio:false}});
 
-  const relSort=rows.slice().sort((a,b)=>b.relevancia_score-a.relevancia_score);
-  const rev=relSort.map(n=>n.id); const revLabels=relSort.map(n=>n.tipo_norma.split(' ')[0]+' '+ (n.numero||n.id).slice(0,16));
+  // CHART RELEVANCIA
+  const sr=rows.slice().sort((a,b)=>b.relevancia_score-a.relevancia_score);
   new Chart(document.getElementById('chartRel'),{type:'bar',data:{
-    labels:revLabels,datasets:[{label:'Relevancia /10',data:rev.length?relSort.map(n=>n.relevancia_score):[],
-      backgroundColor:relSort.map(n=>n.relevancia_score>=8?('#ff5d76'):n.relevancia_score>=5?'#f5b942':'#2fd583'),borderRadius:6,maxBarThickness:30}]},
-    options:{indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{min:0,max:10,ticks:{color:'#8b93b0',stepSize:1},grid:{color:'rgba(255,255,255,.05)'}},
-      y:{ticks:{color:'#8b93b0',autoSkip:false,font:{size:11}},grid:{display:false}}},responsive:true,maintainAspectRatio:false}});
+      labels:sr.map(n=>`${n.tipo_norma.split(' ')[0]} ${n.numero||n.id.slice(0,12)}`),
+      datasets:[{label:'Relevancia',data:sr.map(n=>n.relevancia_score),backgroundColor:sr.map(n=>n.relevancia_score>=8?'#ff5d76':n.relevancia_score>=5?'#f5b942':'#2fd583'),borderRadius:5,maxBarThickness:24}]},
+    options:{indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{min:0,max:10,ticks:{color:'#8ea0c8',stepSize:2},grid:{color:'rgba(120,150,220,.08)'}},y:{ticks:{color:'#8ea0c8',autoSkip:false,font:{size:11}},grid:{display:false}}},responsive:true,maintainAspectRatio:false}});
 
-  // ---- Estado de filtros ----
-  let fRub=false;
-  const clr=document.getElementById('chipRub');
-  clr.addEventListener('click',()=>{fRub=!fRub;clr.classList.toggle('rub',fRub);clr.classList.toggle('active',fRub);render();});
-  ['search','fTipo','fTema','fEstado','fRel'].forEach(id=>document.getElementById(id).addEventListener('input',render));
-  document.getElementById('btnClear').addEventListener('click',()=>{
-    document.getElementById('search').value='';
-    ['fTipo','fTema','fEstado','fRel'].forEach(id=>document.getElementById(id).value='');
-    fRub=false;clr.classList.remove('active');clr.classList.remove('rub');render();});
+  // filtros estado
+  let fRub=false,fCrit=false;
+  document.getElementById('chipRub').addEventListener('click',()=>{fRub=!fRub;document.getElementById('chipRub').classList.toggle('active',fRub);render();});
+  document.getElementById('chipCrit').addEventListener('click',()=>{fCrit=!fCrit;document.getElementById('chipCrit').classList.toggle('active',fCrit);render();});
+  ['search','fTipo','fTema','fEstado','fCumple'].forEach(id=>document.getElementById(id).addEventListener('input',render));
+  document.getElementById('btnClear').addEventListener('click',()=>{document.getElementById('search').value='';['fTipo','fTema','fEstado','fCumple'].forEach(id=>document.getElementById(id).value='');fRub=fCrit=false;document.getElementById('chipRub').classList.remove('active');document.getElementById('chipCrit').classList.remove('active');render();});
 
   function render(){
     const q=(document.getElementById('search').value||'').toLowerCase();
-    const fTipo=document.getElementById('fTipo').value;
-    const fTema=document.getElementById('fTema').value;
-    const fEstado=document.getElementById('fEstado').value;
-    const fRel=document.getElementById('fRel').value;
+    const fTipo=document.getElementById('fTipo').value,fTema=document.getElementById('fTema').value,fEstado=document.getElementById('fEstado').value,fCum=document.getElementById('fCumple').value;
     let items=rows.filter(n=>{
       if(fRub&&!EsRubro(n))return false;
-      if(fTipo&&Tipo(n)!==fTipo)return false;
+      if(fCrit&&(n.relevancia_score<8||EsDer(n)))return false;
+      if(fTipo&&n.tipo_norma!==fTipo)return false;
       if(fTema&&n.tema_sst!==fTema)return false;
-      if(fEstado){const esD=EsDerogada(n); if((fEstado==='Vigente'&&esD)||(fEstado==='Derogada'&&!esD))return false;}
-      if(fRel!==''){const s=n.relevancia_score; if(fRel==='8'&&s<8)return false; if(fRel==='5'&&(s<5||s>=8))return false; if(fRel==='0'&&s>=5)return false;}
-      if(q){const blob=[n.id,n.tipo_norma,n.numero,n.tema_sst,n.subtema,n.descripcion,n.aplica_a].join(' ').toLowerCase(); if(!blob.includes(q))return false;}
+      if(fEstado){const d=EsDer(n);if((fEstado==='Vigente'&&d)||(fEstado==='Derogada'&&!d))return false;}
+      if(fCum&&eLabel[ecum(n)]!==fCum)return false;
+      if(q){const blob=[n.id,n.tipo_norma,n.numero,n.tema_sst,n.subtema,n.descripcion,n.aplica_a,(n.obligaciones_clave||[]).join(' ')].join(' ').toLowerCase();if(!blob.includes(q))return false;}
       return true;
     });
-    const tbody=document.getElementById('tbody');
-    tbody.innerHTML='';
+    items.sort((a,b)=>b.relevancia_score-a.relevancia_score);
+    const tb=document.getElementById('tbody');tb.innerHTML='';
     document.getElementById('empty').style.display=items.length?'none':'block';
     document.getElementById('rowCount').textContent=items.length+' normativa'+(items.length!==1?'s':'');
-    items.sort((a,b)=>b.relevancia_score-a.relevancia_score);
     items.forEach(n=>{
-      const tr=document.createElement('tr');
-      const rubBadge=EsRubro(n)?'<span class="badge ru">⛽ rubro</span>':'';
-      const degBadge=EsDerogada(n)?'<span class="badge deg">derogada</span>':'';
-      const tCls=tipoClase(n.tipo_norma);
-      const apl=n.aplica_desde_trabajadores!=null?('≥'+n.aplica_desde_trabajadores+' trab.'):'—';
-      const oblig=(n.obligaciones_clave||[]).map(o=>`<li>${normHTML(o)}</li>`).join('');
-      tr.innerHTML=`<td class="id">${normHTML(n.id)}${rubBadge}</td>
-        <td><span class="tag ${tCls}">${normHTML(n.tipo_norma)}</span></td>
-        <td>${normHTML(n.numero||'-')}</td>
-        <td>${normHTML(n.tema_sst)}<br><span style="font-size:11px;color:var(--muted)">${normHTML(n.subtema||'')}</span></td>
-        <td>${EsDerogada(n)?'<span style="color:var(--red)">Derogada</span>':'<span style="color:var(--green)">Vigente</span>'}${degBadge}</td>
-        <td>${apl}<br><span style="font-size:11px;color:var(--muted)">${normHTML(n.fecha_publicacion)}</span></td>
-        <td><ul class="list">${oblig||'<li>—</li>'}</ul></td>
-        <td><span class="score ${relCat(n.relevancia_score)}">${n.relevancia_score}/10</span></td>
-        <td>${n.enlace_oficial?`<a href="${normHTML(n.enlace_oficial)}" target="_blank" rel="noopener">Ver fuente ↗</a>`:'—'}</td>`;
-      tbody.appendChild(tr);
+      const tr=document.createElement('tr');const e=ecum(n);
+      const rub=EsRubro(n)?'<span class="badge ru">⛽</span>':'';const deg=EsDer(n)?'<span class="badge deg">derogada</span>':'';
+      const pB=()=>{if(n.porcentaje_cumplimiento==null)return'<span class="est na"><span class="p"></span>No aplica</span>';const c=n.porcentaje_cumplimiento;const col=c>=80?'var(--green)':c>=40?'var(--yellow)':'var(--red)';const lab=c>=80?'implementado':c>=40?'en proceso':'pendiente';return`<div class="est ${eLabel[e]}"><span class="p"></span>${lab}</div><div class="pb"><i style="width:${c}%;background:${col}"></i></div><div class="pbt">${c}%</div>`;};
+      const estLbl=EsDer(n)?'Derogada':n.estado_revision.includes('Vigente')?'Vigente':'—';
+      tr.innerHTML=`<td><div class="nid">${esc(n.id)}${rub}${deg}</div><div class="nsub">${esc(n.numero||'')}</div></td>
+        <td><span class="tag ${tCls(n.tipo_norma)}">${esc(n.tipo_norma)}</span></td>
+        <td>${esc(n.numero||'—')}</td>
+        <td>${esc(n.tema_sst)}<div class="nsub">${esc(n.subtema||'')}</div></td>
+        <td><span class="est ${EsDer(n)?'na':'ok'}"><span class="p"></span>${estLbl}</span></td>
+        <td>${n.aplica_desde_trabajadores!=null?'≥'+n.aplica_desde_trabajadores+' trab.':'—'}<div class="nsub">${esc(n.fecha_publicacion)}</div></td>
+        <td>${pB()}</td>
+        <td><span class="relev ${rcat(n.relevancia_score)}">${n.relevancia_score}</span>/10</td>
+        <td>${n.enlace_oficial?`<a class="srcl" href="${esc(n.enlace_oficial)}" target="_blank" rel="noopener">Ver fuente ↗</a>`:'—'}</td>`;
+      tb.appendChild(tr);
     });
   }
   render();
