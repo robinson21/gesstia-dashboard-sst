@@ -47,9 +47,19 @@ body{font-family:'Inter','Segoe UI',system-ui,sans-serif;background:
 .status-cta .lbl{font-size:12px;color:var(--muted)}
 .status-cta .val{font-weight:700;font-size:13px}
 
+/* BARRa filtro activo */
+.actbar{display:none;align-items:center;gap:12px;background:linear-gradient(90deg,rgba(124,92,255,.18),rgba(79,140,255,.10));border:1px solid var(--accent2);border-radius:12px;padding:12px 16px;margin-bottom:18px}
+.actbar.show{display:flex}
+.actbar .albl{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.7px;font-weight:700}
+.actbar .achip{display:inline-flex;align-items:center;gap:7px;background:var(--accent2);color:#fff;border-radius:999px;padding:5px 14px;font-size:13px;font-weight:700;box-shadow:0 2px 12px rgba(124,92,255,.4)}
+.actbar .ax{background:rgba(255,255,255,.25);border:none;color:#fff;width:18px;height:18px;border-radius:50%;cursor:pointer;font-weight:800;line-height:1;font-size:12px}
+.actbar .acount{margin-left:auto;font-size:12px;color:var(--muted)}
+.actbar .aclear{background:rgba(255,93,118,.2);border:1px solid var(--red);color:var(--red);border-radius:9px;padding:7px 14px;font-size:12px;cursor:pointer;font-weight:600}
+.actbar .aclear:hover{background:var(--red);color:#fff}
+
 /* KPIs contextuales */
 .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:28px}
-.kpi{position:relative;background:linear-gradient(180deg,var(--card),rgba(18,28,51,.6));border:1px solid var(--border);border-radius:var(--radius);padding:18px;min-height:118px;overflow:hidden;transition:transform .15s,box-shadow .15s}
+.kpi{position:relative;background:linear-gradient(180deg,var(--card),rgba(18,28,51,.6));border:1px solid var(--border);border-radius:var(--radius);padding:18px;min-height:118px;overflow:hidden;transition:transform .15s,box-shadow .15s;cursor:pointer}
 .kpi:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
 .kpi::after{content:'';position:absolute;right:-40px;top:-40px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(79,140,255,.16),transparent 70%)}
 .kpi .khead{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}
@@ -62,6 +72,11 @@ body{font-family:'Inter','Segoe UI',system-ui,sans-serif;background:
 .kpi.trend-up .ktrend{color:var(--green)}.kpi.trend-warn .ktrend{color:var(--yellow)}.kpi.trend-down .ktrend{color:var(--red)}
 .kaccent{border-left:3px solid transparent}
 .kaccent.c1{border-left-color:var(--accent)}.kaccent.c2{border-left-color:var(--accent2)}.kaccent.c3{border-left-color:var(--green)}.kaccent.c4{border-left-color:var(--orange)}
+.kpi.active{outline:2px solid var(--accent2);box-shadow:var(--shadow)}
+
+/* Hint interactivo */
+.hint{display:inline-flex;align-items:center;gap:6px;font-size:11px;color:var(--dim);margin-bottom:12px}
+.hint b{color:#b7a8ff;font-weight:600}
 
 /* ===== CHARTS LAYOUT ===== */
 .chartgrid{display:grid;grid-template-columns:1.4fr 1fr;gap:16px;margin-bottom:18px}
@@ -73,6 +88,7 @@ body{font-family:'Inter','Segoe UI',system-ui,sans-serif;background:
 .chbox{height:250px;position:relative}
 .chbox.tall{height:300px}
 .chbox.hbig{height:320px}
+.cov-click{font-size:10px;color:var(--dim);text-align:center;margin-top:4px}
 
 /* ===== BARRA COBERTURA ===== */
 .cobertura{display:flex;flex-direction:column;gap:20px;height:100%}
@@ -95,12 +111,14 @@ body{font-family:'Inter','Segoe UI',system-ui,sans-serif;background:
 .tblwrap{overflow:auto;border-radius:12px;border:1px solid var(--border);max-height:620px}
 table{width:100%;border-collapse:separate;border-spacing:0;font-size:13px}
 thead th{position:sticky;top:0;background:#161f3a;color:var(--muted);text-transform:uppercase;font-size:10.5px;letter-spacing:.6px;padding:13px 14px;text-align:left;font-weight:700;border-bottom:1px solid var(--border2);z-index:3;white-space:nowrap}
-tbody tr{border-bottom:1px solid rgba(120,150,220,.08);transition:background .12s}
+tbody tr{border-bottom:1px solid rgba(120,150,220,.08);transition:background .12s;cursor:pointer}
 tbody tr:hover{background:rgba(79,140,255,.05)}
+tbody tr.row-active{background:rgba(124,92,255,.12);box-shadow:inset 3px 0 0 var(--accent2)}
 tbody td{padding:13px 14px;vertical-align:middle;border-bottom:1px solid rgba(120,150,220,.07)}
 td .nid{font-family:'JetBrains Mono',Consolas,monospace;font-size:11.5px;color:var(--accent)}
 td .nsub{font-size:11px;color:var(--dim);margin-top:2px}
-.tag{display:inline-block;padding:3px 9px;border-radius:6px;font-size:10.5px;font-weight:700;letter-spacing:.3px}
+.tag{display:inline-block;padding:3px 9px;border-radius:6px;font-size:10.5px;font-weight:700;letter-spacing:.3px;cursor:pointer;transition:filter .12s}
+.tag:hover{filter:brightness(1.25)}
 .tag.ley{background:rgba(79,140,255,.16);color:#93b6ff}
 .tag.dec{background:rgba(124,92,255,.16);color:#b7a8ff}
 .tag.res{background:rgba(53,200,240,.15);color:#6fd8f5}
@@ -153,12 +171,20 @@ footer{text-align:center;color:var(--dim);font-size:11.5px;margin-top:30px;paddi
     <div class="topbar">
       <div class="titles">
         <h1>Panel de Cumplimiento Normativo SST</h1>
-        <p>Normativa de seguridad y salud en el trabajo · rubro <b style="color:var(--text)">combustibles</b></p>
+        <p>Normativa de seguridad y salud en el trabajo · rubro <b style="color:var(--text)">combustibles</b> — <span class="hint">🖱️ <b>Haz clic en cualquier dato</b> (fila, gráfico, tag, KPI) para filtrar todo lo relacionado</span></p>
       </div>
       <div class="status-cta">
         <span class="orb"></span>
         <div><span class="lbl">Última actualización</span><br><span class="val" id="last-update">—</span></div>
       </div>
+    </div>
+
+    <!-- FILTRO ACTIVO -->
+    <div class="actbar" id="actbar">
+      <span class="albl">Filtro por clic: </span>
+      <span class="achip" id="actchip">— <button class="ax" id="actx" title="Quitar este filtro">✕</button></span>
+      <span class="acount" id="actcount"></span>
+      <button class="aclear" id="actClear">Limpiar todo</button>
     </div>
 
     <!-- KPIs CONTEXTUALES -->
@@ -167,22 +193,22 @@ footer{text-align:center;color:var(--dim);font-size:11.5px;margin-top:30px;paddi
     <!-- CHARTS -->
     <div class="chartgrid">
       <div class="card">
-        <div class="cardhead"><h3>Normativas vigentes por tipo</h3><span class="sub">Distribución de 15 normas activas + 2 de referencia</span></div>
+        <div class="cardhead"><h3>Normativas vigentes por tipo</h3><span class="sub">🖱️ clic en un segmento o leyenda filtra por tipo</span></div>
         <div class="chbox"><canvas id="chartTipo"></canvas></div>
       </div>
       <div class="card">
-        <div class="cardhead"><h3>Cobertura de cumplimiento</h3><span class="sub">Avance en obligaciones implementadas</span></div>
+        <div class="cardhead"><h3>Cobertura de cumplimiento</h3><span class="sub">🖱️ clic en un segmento filtra por estado</span></div>
         <div class="cobertura">
           <div class="cov-dona chbox" style="height:170px"><canvas id="chartCov"></canvas></div>
           <div class="cov-ley" id="covLey"></div>
         </div>
       </div>
       <div class="card wide">
-        <div class="cardhead"><h3>Requisitos (obligaciones) por tipo</h3><span class="sub">N° de obligaciones clave que impone cada tipo de normativa</span></div>
+        <div class="cardhead"><h3>Requisitos (obligaciones) por tipo</h3><span class="sub">🖱️ clic en una barra filtra por tipo de norma</span></div>
         <div class="chbox tall"><canvas id="chartReq"></canvas></div>
       </div>
       <div class="card wide">
-        <div class="cardhead"><h3>Relevancia por normativa</h3><span class="sub">Prioridad de cumplimiento (0-10) · <span style="color:var(--red)">■ alta</span> <span style="color:var(--yellow)">■ media</span> <span style="color:var(--green)">■ baja</span></span></div>
+        <div class="cardhead"><h3>Relevancia por normativa</h3><span class="sub">Prioridad de cumplimiento (0-10) · <span style="color:var(--red)">■ alta</span> <span style="color:var(--yellow)">■ media</span> <span style="color:var(--green)">■ baja</span> · 🖱️ clic en una barra filtra esa norma</span></div>
         <div class="chbox hbig"><canvas id="chartRel"></canvas></div>
       </div>
     </div>
@@ -237,76 +263,166 @@ footer{text-align:center;color:var(--dim);font-size:11.5px;margin-top:30px;paddi
   const rcat=s=>s>=8?'high':s>=5?'med':'low';
   const ecum=n=>n.estado_cumplimiento||(EsDer(n)?'no_aplica':'pendiente');
   const eLabel={implementado:'ok',en_proceso:'pro',pendiente:'pen',no_aplica:'na'};
+  const ecLab={ok:'Implementado',pro:'En proceso',pen:'Pendiente',na:'No aplica'};
 
-  // KPIs contextuales
-  const activas=rows.filter(n=>!EsDer(n));
-  const rubro=rows.filter(EsRubro).filter(n=>!EsDer(n));
-  const criticas=activas.filter(n=>n.relevancia_score>=8);
-  const enProceso=activas.filter(n=>ecum(n)==='en_proceso').length;
-  const implementadas=activas.filter(n=>ecum(n)==='implementado').length;
-  const pendientes=activas.filter(n=>ecum(n)==='pendiente').length;
-  const rrss=meta.colaboradores_por_rrss||{};
-  const rrLabels=Object.keys(rrss);
-  const totalCol=meta.colaboradores_totales||0;
-  const cobertura=activas.length?Math.round(((implementadas*1+enProceso*0.6+pendientes*0.1)/activas.length)*100):0;
+  // ========== FILTRO GLOBAL POR CLIC ==========
+  // GF: {k, val} — k: 'tipo'|'tema'|'estado'|'cumpl'|'norma'|'rubro'|'crit', val: valor
+  let GF=null;
+  const charts={}; // guarda las instancias para poder destruirlas al refiltrar
 
-  const kpis=[
-    {c:'c1',ic:'🏢',l:'Razones sociales',v:'3',sub:'Grupo combustibles',foot:rrLabels.map(r=>`${r}: <b>${rrss[r]}</b>`).join(' · '),tr:'',tc:''},
-    {c:'c2',ic:'👥',l:'Colaboradores',v:totalCol.toLocaleString('es-CL'),sub:'Cobertura total del grupo',foot:'Depto. prevención y comités en las 3 RRSS',tr:'',tc:''},
-    {c:'c3',ic:'🎯',l:'Cobertura SST',v:cobertura+'%',sub:'Obligaciones implementadas',foot:'8 implementadas · '+enProceso+' en proceso · '+pendientes+' pendientes',tr:cobertura>=80?'▲':cobertura>=50?'▶ todo':'▼',tc:cobertura>=80?'trend-up':cobertura>=50?'trend-warn':'trend-down'},
-    {c:'c4',ic:'⛽',l:'Normas del rubro',v:rubro.length,sub:'Combustibles vigentes',foot:criticas.filter(EsRubro).length+' de alta prioridad',tr:rubro.length?'●':'',tc:rubro.length?'trend-warn':''}
-  ];
-  document.getElementById('kpis').innerHTML=kpis.map(k=>`<div class="kpi ${k.tc}"><div class="khead"><span class="klabel">${k.l}</span><span class="kicon">${k.ic}</span></div>
-    <div class="kvalue">${k.v}</div><div class="ksub">${k.sub}</div>
-    <div class="ksub" style="margin-top:2px">${k.foot}</div>${k.tr?`<div class="ktrend">${k.tr} tendencia de cumplimiento</div>`:''}</div>`).join('');
+  function applyGF(item){
+    // si clic en el mismo elemento -> quitar filtro (toggle)
+    if(GF&&GF.k===item.k&&GF.val===item.val){clearGF();return;}
+    GF=item;
+    // vaciar controles que entren en conflicto (el clic define el filtro principal)
+    document.getElementById('search').value='';
+    ['fTipo','fTema','fEstado','fCumple'].forEach(id=>document.getElementById(id).value='');
+    document.getElementById('chipRub').classList.remove('active');
+    document.getElementById('chipCrit').classList.remove('active');
+    renderAll();
+  }
+  function clearGF(){GF=null;renderAll();}
 
-  // cargar filtros
-  const setF=(id,vals)=>{const s=document.getElementById(id);[...new Set(vals.filter(Boolean))].sort().forEach(v=>{const o=document.createElement('option');o.value=v;o.textContent=v;s.appendChild(o);});};
-  setF('fTipo',rows.map(n=>n.tipo_norma));
-  setF('fTema',rows.map(n=>n.tema_sst));
-  setF('fEstado',rows.map(n=>EsDer(n)?'Derogada':'Vigente'));
+  function matchesGF(n){
+    if(!GF)return true;
+    switch(GF.k){
+      case 'tipo': return n.tipo_norma===GF.val;
+      case 'tema': return (n.tema_sst+' '+(n.subtema||'')).toLowerCase().includes(String(GF.val).toLowerCase());
+      case 'estado': {const d=EsDer(n);return GF.val==='Vigente'?!d:d;}
+      case 'cumpl': return eLabel[ecum(n)]===GF.val;
+      case 'norma': return n.id===GF.val;
+      case 'rubro': return EsRubro(n);
+      case 'crit': return n.relevancia_score>=8&&!EsDer(n);
+    }
+    return true;
+  }
+  function gfLabel(){
+    if(!GF)return'';
+    switch(GF.k){
+      case 'tipo':return'Tipo: '+GF.val;
+      case 'tema':return'Tema: '+GF.val;
+      case 'estado':return'Estado: '+GF.val;
+      case 'cumpl':return'Cumplimiento: '+ecLab[GF.val];
+      case 'norma':{const n=rows.find(x=>x.id===GF.val);return'Norma: '+(n?n.tipo_norma.split(' ')[0]+' '+(n.numero||n.id):GF.val);}
+      case 'rubro':return'⛽ Rubro combustibles';
+      case 'crit':return'★ Críticas (≥8)';
+    }
+  }
 
-  // CHART TIPO (doughnut)
-  const byTipo={};activas.forEach(n=>byTipo[n.tipo_norma]=(byTipo[n.tipo_norma]||0)+1);
-  const tKeys=Object.keys(byTipo);
-  new Chart(document.getElementById('chartTipo'),{type:'doughnut',
-    data:{labels:tKeys,datasets:[{data:tKeys.map(k=>byTipo[k]),backgroundColor:tKeys.map(k=>k.includes('Ley')?'#4f8cff':k.includes('Decreto')?'#7c5cff':k.includes('Resoluc')?'#35c8f0':'#5fd3c9'),borderWidth:2,borderColor:'#121c33',hoverOffset:8}]},
-    options:{cutout:'68%',plugins:{legend:{position:'right',labels:{color:'#8ea0c8',boxWidth:12,font:{size:12},padding:14}}},responsive:true,maintainAspectRatio:false}});
+  // ========== RECÁLCULO DE KPIs (respetando el filtro global) ==========
+  function renderKPIs(source){
+    const a=source.filter(n=>!EsDer(n));
+    const rubro=a.filter(EsRubro);
+    const criticas=a.filter(n=>n.relevancia_score>=8);
+    const enProceso=a.filter(n=>ecum(n)==='en_proceso').length;
+    const implementadas=a.filter(n=>ecum(n)==='implementado').length;
+    const pendientes=a.filter(n=>ecum(n)==='pendiente').length;
+    const rrss=meta.colaboradores_por_rrss||{};
+    const rrLabels=Object.keys(rrss);
+    const totalCol=meta.colaboradores_totales||0;
+    const cobertura=a.length?Math.round(((implementadas*1+enProceso*0.6+pendientes*0.1)/a.length)*100):0;
+    const kpis=[
+      {c:'c1',ic:'🏢',l:'Razones sociales',v:'3',sub:'Grupo combustibles',foot:rrLabels.map(r=>`${r}: <b>${rrss[r]}</b>`).join(' · '),tr:'',tc:''},
+      {c:'c2',ic:'👥',l:'Colaboradores',v:totalCol.toLocaleString('es-CL'),sub:'Cobertura total del grupo',foot:'Depto. prevención y comités en las 3 RRSS',tr:'',tc:''},
+      {c:'c3',ic:'🎯',l:'Cobertura SST',v:cobertura+'%',sub:'Obligaciones implementadas',foot:implementadas+' implementadas · '+enProceso+' en proceso · '+pendientes+' pendientes',tr:cobertura>=80?'▲':cobertura>=50?'▶':'▼',tc:cobertura>=80?'trend-up':cobertura>=50?'trend-warn':'trend-down'},
+      {c:'c4',ic:'⛽',l:'Normas del rubro',v:rubro.length,sub:'Combustibles vigentes',foot:criticas.filter(EsRubro).length+' de alta prioridad',tr:rubro.length?'●':'',tc:rubro.length?'trend-warn':''}
+    ];
+    const wrap=document.getElementById('kpis');wrap.innerHTML='';
+    kpis.forEach((k,i)=>{
+      const d=document.createElement('div');d.className=`kpi kaccent ${k.c} ${k.tc}`+(GF&&gfKpiMatch(GF,i)?' active':'');
+      d.innerHTML=`<div class="khead"><span class="klabel">${k.l}</span><span class="kicon">${k.ic}</span></div>
+        <div class="kvalue">${k.v}</div><div class="ksub">${k.sub}</div>
+        <div class="ksub" style="margin-top:2px">${k.foot}</div>${k.tr?`<div class="ktrend">${k.tr} tendencia de cumplimiento</div>`:''}`;
+      d.title='Clic para filtrar por esta métrica';
+      // accesos rápidos: KPI rubro -> rubro, KPI normas rubro -> rubro, KPI cobertura -> sin acción global especial
+      if(i===0){d.addEventListener('click',()=>applyGF({k:'rubro',val:''}));}
+      else if(i===3){d.addEventListener('click',()=>applyGF({k:'rubro',val:''}));}
+      else if(i===2){d.style.cursor='default';d.title='Métrica global de cobertura (información)';}
+      wrap.appendChild(d);
+    });
+  }
+  function gfKpiMatch(GF,i){
+    if(i===0){return GF&&GF.k==='rubro';}
+    if(i===3){return GF&&GF.k==='rubro';}
+    return false;
+  }
 
-  // CHART COBERTURA
-  const covData=[implementadas,enProceso,pendientes];
-  new Chart(document.getElementById('chartCov'),{type:'doughnut',
-    data:{labels:['Implementado','En proceso','Pendiente'],datasets:[{data:covData,backgroundColor:['#2fd583','#f5b942','#ff5d76'],borderWidth:3,borderColor:'#121c33'}]},
-    options:{cutout:'70%',plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.label+': '+c.parsed}}},responsive:true,maintainAspectRatio:false}});
-  document.getElementById('covLey').innerHTML=`<b>${implementadas}</b> implementadas · <b>${enProceso}</b> en proceso · <b>${pendientes}</b> pendientes <span class="chip">de ${activas.length} vigentes</span><br>Cobertura efectiva ponderada: <b>${cobertura}%</b>`;
+  // ========== RECÁLCULO DE GRÁFICOS (respetando el filtro global) ==========
+  function buildCharts(source){
+    // destruye los anteriores
+    Object.keys(charts).forEach(k=>{if(charts[k]){charts[k].destroy();delete charts[k];}});
 
-  // CHART REQUISITOS
-  const reqMap={};rows.forEach(n=>{if(EsDer(n))return;const k=n.tipo_norma;const v=reqMap[k]||{o:0,n:0};v.o+=(n.obligaciones_clave||[]).length;v.n++;reqMap[k]=v;});
-  const rk=Object.keys(reqMap);
-  new Chart(document.getElementById('chartReq'),{type:'bar',
-    data:{labels:rk,datasets:[{label:'Obligaciones',data:rk.map(k=>reqMap[k].o),backgroundColor:'#7c5cff',borderRadius:8,maxBarThickness:60},{label:'Normas',data:rk.map(k=>reqMap[k].n),backgroundColor:'rgba(53,200,240,.6)',borderRadius:8,maxBarThickness:40}]},
-    options:{plugins:{legend:{labels:{color:'#8ea0c8',boxWidth:12}}},scales:{x:{ticks:{color:'#8ea0c8'},grid:{display:false}},y:{beginAtZero:true,ticks:{color:'#8ea0c8'},grid:{color:'rgba(120,150,220,.08)'}}},responsive:true,maintainAspectRatio:false}});
+    const activas=source.filter(n=>!EsDer(n));
 
-  // CHART RELEVANCIA
-  const sr=rows.slice().sort((a,b)=>b.relevancia_score-a.relevancia_score);
-  new Chart(document.getElementById('chartRel'),{type:'bar',data:{
-      labels:sr.map(n=>`${n.tipo_norma.split(' ')[0]} ${n.numero||n.id.slice(0,12)}`),
-      datasets:[{label:'Relevancia',data:sr.map(n=>n.relevancia_score),backgroundColor:sr.map(n=>n.relevancia_score>=8?'#ff5d76':n.relevancia_score>=5?'#f5b942':'#2fd583'),borderRadius:5,maxBarThickness:24}]},
-    options:{indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{min:0,max:10,ticks:{color:'#8ea0c8',stepSize:2},grid:{color:'rgba(120,150,220,.08)'}},y:{ticks:{color:'#8ea0c8',autoSkip:false,font:{size:11}},grid:{display:false}}},responsive:true,maintainAspectRatio:false}});
+    // TIPO (doughnut)
+    const byTipo={};activas.forEach(n=>byTipo[n.tipo_norma]=(byTipo[n.tipo_norma]||0)+1);
+    const tKeys=Object.keys(byTipo);
+    const tipoCol=k=>k.includes('Ley')?'#4f8cff':k.includes('Decreto')?'#7c5cff':k.includes('Resoluc')?'#35c8f0':'#5fd3c9';
+    charts.tipo=new Chart(document.getElementById('chartTipo'),{type:'doughnut',
+      data:{labels:tKeys,datasets:[{data:tKeys.map(k=>byTipo[k]),backgroundColor:tKeys.map(tipoCol),borderWidth:2,borderColor:'#121c33',hoverOffset:8}]},
+      options:{cutout:'68%',onClick:function(evt,elems){if(elems.length){const k=this.data.labels[elems[0].index];applyGF({k:'tipo',val:k});}},plugins:{legend:{position:'right',labels:{color:'#8ea0c8',boxWidth:12,font:{size:12},padding:14},onClick:(e,li,ch)=>{const k=ch.data.labels[li.index];applyGF({k:'tipo',val:k});}},tooltip:{callbacks:{label:c=>c.label+': '+c.parsed+' norma(s)'}}},responsive:true,maintainAspectRatio:false}});
 
-  // filtros estado
-  let fRub=false,fCrit=false;
-  document.getElementById('chipRub').addEventListener('click',()=>{fRub=!fRub;document.getElementById('chipRub').classList.toggle('active',fRub);render();});
-  document.getElementById('chipCrit').addEventListener('click',()=>{fCrit=!fCrit;document.getElementById('chipCrit').classList.toggle('active',fCrit);render();});
-  ['search','fTipo','fTema','fEstado','fCumple'].forEach(id=>document.getElementById(id).addEventListener('input',render));
-  document.getElementById('btnClear').addEventListener('click',()=>{document.getElementById('search').value='';['fTipo','fTema','fEstado','fCumple'].forEach(id=>document.getElementById(id).value='');fRub=fCrit=false;document.getElementById('chipRub').classList.remove('active');document.getElementById('chipCrit').classList.remove('active');render();});
+    // COBERTURA (doughnut) — filtra por estado de cumplimiento
+    const impl=activas.filter(n=>ecum(n)==='implementado').length;
+    const proc=activas.filter(n=>ecum(n)==='en_proceso').length;
+    const pend=activas.filter(n=>ecum(n)==='pendiente').length;
+    const covStates=[['Implementado','ok','#2fd583'],['En proceso','pro','#f5b942'],['Pendiente','pen','#ff5d76']].filter(p=>p[2]!=='#ff5d76'||pend>0);
+    const covData=[impl,proc,pend];
+    // mantener 3 categorías siempre (filtrables)
+    charts.cov=new Chart(document.getElementById('chartCov'),{type:'doughnut',
+      data:{labels:['Implementado','En proceso','Pendiente'],datasets:[{data:covData,backgroundColor:['#2fd583','#f5b942','#ff5d76'],borderWidth:3,borderColor:'#121c33'}]},
+      options:{cutout:'70%',onClick:function(evt,elems){if(elems.length){const m=[['ok'],['pro'],['pen']][elems[0].index][0];applyGF({k:'cumpl',val:m});}},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.label+': '+c.parsed}}},responsive:true,maintainAspectRatio:false}});
+    document.getElementById('covLey').innerHTML=`<b>${impl}</b> implementadas · <b>${proc}</b> en proceso · <b>${pend}</b> pendientes <span class="chip">de ${activas.length} vigentes</span><br>Cobertura efectiva ponderada: <b>${Math.round(activas.length?((impl*1+proc*0.6+pend*0.1)/activas.length)*100:0)}%</b>`;
 
-  function render(){
+    // REQUISITOS (bar) — filtra por tipo
+    const reqMap={};source.forEach(n=>{if(EsDer(n))return;const k=n.tipo_norma;const v=reqMap[k]||{o:0,n:0};v.o+=(n.obligaciones_clave||[]).length;v.n++;reqMap[k]=v;});
+    const rk=Object.keys(reqMap);
+    charts.req=new Chart(document.getElementById('chartReq'),{type:'bar',
+      data:{labels:rk,datasets:[{label:'Obligaciones',data:rk.map(k=>reqMap[k].o),backgroundColor:'#7c5cff',borderRadius:8,maxBarThickness:60},{label:'Normas',data:rk.map(k=>reqMap[k].n),backgroundColor:'rgba(53,200,240,.6)',borderRadius:8,maxBarThickness:40}]},
+      options:{onClick:function(evt,elems){if(elems.length){const k=this.data.labels[elems[0].index];applyGF({k:'tipo',val:k});}},plugins:{legend:{labels:{color:'#8ea0c8',boxWidth:12}}},scales:{x:{ticks:{color:'#8ea0c8'},grid:{display:false}},y:{beginAtZero:true,ticks:{color:'#8ea0c8'},grid:{color:'rgba(120,150,220,.08)'}}},responsive:true,maintainAspectRatio:false}});
+
+    // RELEVANCIA (hbar) — filtra por norma específica
+    const sr=source.slice().sort((a,b)=>b.relevancia_score-a.relevancia_score);
+    const rl=src=>src.relevancia_score>=8?'#ff5d76':src.relevancia_score>=5?'#f5b942':'#2fd583';
+    charts.rel=new Chart(document.getElementById('chartRel'),{type:'bar',data:{
+        labels:sr.map(n=>`${n.tipo_norma.split(' ')[0]} ${n.numero||n.id.slice(0,12)}`),
+        datasets:[{label:'Relevancia',data:sr.map(n=>n.relevancia_score),backgroundColor:sr.map(rl),borderRadius:5,maxBarThickness:24}]},
+      options:{indexAxis:'y',onClick:function(evt,elems){if(elems.length){const n=sr[elems[0].index];applyGF({k:'norma',val:n.id});}},plugins:{legend:{display:false}},scales:{x:{min:0,max:10,ticks:{color:'#8ea0c8',stepSize:2},grid:{color:'rgba(120,150,220,.08)'}},y:{ticks:{color:'#8ea0c8',autoSkip:false,font:{size:11}},grid:{display:false}}},responsive:true,maintainAspectRatio:false}});
+
+    // leyenda cov-click
+    if(GF)document.getElementById('covLey').innerHTML+=`<div class="cov-click" style="margin-top:6px">🖱️ ${gfLabel()}</div>`;
+  }
+
+  // ========== RENDER COMPLETO (KPIs + gráficos + tabla) ==========
+  function renderAll(){
+    // fuente filtrada según GF
+    const active=GF?rows.filter(matchesGF):rows.slice();
+
+    // KPIs y gráficos según la fuente filtrada
+    renderKPIs(active);
+    buildCharts(active);
+
+    // barra de filtro activo
+    const bar=document.getElementById('actbar');
+    if(GF){
+      bar.classList.add('show');
+      document.getElementById('actchip').innerHTML=`${esc(gfLabel())} <button class="ax" id="actx" title="Quitar este filtro">✕</button>`;
+      document.getElementById('actcount').textContent=active.length+' norma(s) en vista';
+      document.getElementById('actx').addEventListener('click',clearGF);
+    }else{
+      bar.classList.remove('show');
+    }
+
+    // tabla
+    renderTable(active);
+  }
+
+  // ========== TABLA (igual que antes, sin romper filtros de toolbar) ==========
+  function renderTable(active){
     const q=(document.getElementById('search').value||'').toLowerCase();
     const fTipo=document.getElementById('fTipo').value,fTema=document.getElementById('fTema').value,fEstado=document.getElementById('fEstado').value,fCum=document.getElementById('fCumple').value;
-    let items=rows.filter(n=>{
-      if(fRub&&!EsRubro(n))return false;
-      if(fCrit&&(n.relevancia_score<8||EsDer(n)))return false;
+    // NOTA: el filtro global ya está aplicado en 'active'. Los filtros de toolbar aplican encima.
+    let items=active.filter(n=>{
       if(fTipo&&n.tipo_norma!==fTipo)return false;
       if(fTema&&n.tema_sst!==fTema)return false;
       if(fEstado){const d=EsDer(n);if((fEstado==='Vigente'&&d)||(fEstado==='Derogada'&&!d))return false;}
@@ -317,14 +433,17 @@ footer{text-align:center;color:var(--dim);font-size:11.5px;margin-top:30px;paddi
     items.sort((a,b)=>b.relevancia_score-a.relevancia_score);
     const tb=document.getElementById('tbody');tb.innerHTML='';
     document.getElementById('empty').style.display=items.length?'none':'block';
-    document.getElementById('rowCount').textContent=items.length+' normativa'+(items.length!==1?'s':'');
+    document.getElementById('rowCount').textContent=items.length+' normativa'+(items.length!==1?'s':'')+(GF?' (filtrado por clic)':'');
     items.forEach(n=>{
       const tr=document.createElement('tr');const e=ecum(n);
       const rub=EsRubro(n)?'<span class="badge ru">⛽</span>':'';const deg=EsDer(n)?'<span class="badge deg">derogada</span>':'';
       const pB=()=>{if(n.porcentaje_cumplimiento==null)return'<span class="est na"><span class="p"></span>No aplica</span>';const c=n.porcentaje_cumplimiento;const col=c>=80?'var(--green)':c>=40?'var(--yellow)':'var(--red)';const lab=c>=80?'implementado':c>=40?'en proceso':'pendiente';return`<div class="est ${eLabel[e]}"><span class="p"></span>${lab}</div><div class="pb"><i style="width:${c}%;background:${col}"></i></div><div class="pbt">${c}%</div>`;};
       const estLbl=EsDer(n)?'Derogada':n.estado_revision.includes('Vigente')?'Vigente':'—';
+      const rowActive=(GF&&GF.k==='norma'&&GF.val===n.id)||(GF&&GF.k==='tipo'&&GF.val===n.tipo_norma);
+      tr.className=rowActive?'row-active':'';
+      tr.title='Clic para filtrar esta norma';
       tr.innerHTML=`<td><div class="nid">${esc(n.id)}${rub}${deg}</div><div class="nsub">${esc(n.numero||'')}</div></td>
-        <td><span class="tag ${tCls(n.tipo_norma)}">${esc(n.tipo_norma)}</span></td>
+        <td><span class="tag ${tCls(n.tipo_norma)}" data-f="tipo" data-v="${esc(n.tipo_norma)}">${esc(n.tipo_norma)}</span></td>
         <td>${esc(n.numero||'—')}</td>
         <td>${esc(n.tema_sst)}<div class="nsub">${esc(n.subtema||'')}</div></td>
         <td><span class="est ${EsDer(n)?'na':'ok'}"><span class="p"></span>${estLbl}</span></td>
@@ -332,10 +451,43 @@ footer{text-align:center;color:var(--dim);font-size:11.5px;margin-top:30px;paddi
         <td>${pB()}</td>
         <td><span class="relev ${rcat(n.relevancia_score)}">${n.relevancia_score}</span>/10</td>
         <td>${n.enlace_oficial?`<a class="srcl" href="${esc(n.enlace_oficial)}" target="_blank" rel="noopener">Ver fuente ↗</a>`:'—'}</td>`;
+      // clic en fila -> filtrar por norma específica
+      tr.addEventListener('click',ev=>{
+        // no disparar si es clic en enlace externo o en tag (el tag tiene su propio handler)
+        if(ev.target.closest('a.srcl'))return;
+        if(ev.target.closest('.tag'))return;
+        applyGF({k:'norma',val:n.id});
+      });
       tb.appendChild(tr);
     });
+    // hacer clicables los tags de tipo dentro de la tabla
+    tb.querySelectorAll('td .tag').forEach(tag=>{
+      tag.addEventListener('click',ev=>{ev.stopPropagation();applyGF({k:'tipo',val:tag.dataset.v});});
+    });
   }
-  render();
+
+  // ========== CARGAR FILTROS TOOLBAR ==========
+  const setF=(id,vals)=>{const s=document.getElementById(id);[...new Set(vals.filter(Boolean))].sort().forEach(v=>{const o=document.createElement('option');o.value=v;o.textContent=v;s.appendChild(o);});};
+  setF('fTipo',rows.map(n=>n.tipo_norma));
+  setF('fTema',rows.map(n=>n.tema_sst));
+  setF('fEstado',rows.map(n=>EsDer(n)?'Derogada':'Vigente'));
+
+  // ========== EVENTOS ==========
+  let fRub=false,fCrit=false;
+  const bindChips=()=>{
+    document.getElementById('chipRub').addEventListener('click',()=>{applyGF({k:'rubro',val:''});});
+    document.getElementById('chipCrit').addEventListener('click',()=>{applyGF({k:'crit',val:''});});
+  };
+  bindChips();
+  ['search','fTipo','fTema','fEstado','fCumple'].forEach(id=>document.getElementById(id).addEventListener('input',()=>renderTable(GF?rows.filter(matchesGF):rows.slice())));
+  document.getElementById('btnClear').addEventListener('click',()=>{
+    document.getElementById('search').value='';['fTipo','fTema','fEstado','fCumple'].forEach(id=>document.getElementById(id).value='');
+    clearGF();
+  });
+  document.getElementById('actClear').addEventListener('click',clearGF);
+
+  // ========== INICIALIZAR ==========
+  renderAll();
 })();
 </script>
 </body>
