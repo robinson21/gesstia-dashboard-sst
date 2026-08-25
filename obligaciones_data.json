@@ -1,0 +1,632 @@
+{
+ "generado": "2026-08-25T00:32:29.091104+00:00",
+ "normativas": [
+  {
+   "id": "LEY-16744",
+   "tipo_norma": "Ley",
+   "numero": "16.744",
+   "fecha_publicacion": "1968-02-01",
+   "fecha_entrada_vigor": "1968-02-01",
+   "estado_legal": "",
+   "tema_sst": "Seguro social y prevención de riesgos",
+   "subtema": "Accidentes del trabajo y enfermedades profesionales",
+   "relevancia_score": "10",
+   "fuente": "BCN LeyChile / Diario Oficial"
+  },
+  {
+   "id": "DS-44-2024",
+   "tipo_norma": "Decreto Supremo",
+   "numero": "44 (MTPS, 2024)",
+   "fecha_publicacion": "2024-07-27",
+   "fecha_entrada_vigor": "2025-02-01",
+   "estado_legal": "",
+   "tema_sst": "Gestión preventiva de riesgos laborales",
+   "subtema": "Sistema de gestión preventiva, comités paritarios y departamentos de prevención",
+   "relevancia_score": "10",
+   "fuente": "BCN LeyChile / Diario Oficial"
+  },
+  {
+   "id": "DS-160-2009-COMB",
+   "tipo_norma": "Decreto Supremo",
+   "numero": "160 (Min. Economía, 2008/2009)",
+   "fecha_publicacion": "2009-07-07",
+   "fecha_entrada_vigor": "2009-07-07",
+   "estado_legal": "",
+   "tema_sst": "Seguridad rubro combustibles",
+   "subtema": "Producción, refinación, transporte, almacenamiento, distribución y abastecimiento de combustibles líquidos",
+   "relevancia_score": "10",
+   "fuente": "BCN LeyChile / Diario Oficial"
+  },
+  {
+   "id": "DS-594-1999",
+   "tipo_norma": "Decreto Supremo",
+   "numero": "594 (MINSAL, 1999)",
+   "fecha_publicacion": "2000-04-29",
+   "fecha_entrada_vigor": "None",
+   "estado_legal": "",
+   "tema_sst": "Condiciones sanitarias y ambientales en el trabajo",
+   "subtema": "Saneamiento básico, agua potable, condiciones ambientales y límites de tolerancia",
+   "relevancia_score": "9.5",
+   "fuente": "BCN LeyChile / Diario Oficial"
+  },
+  {
+   "id": "LEY-21643-KARIN",
+   "tipo_norma": "Ley",
+   "numero": "21.643 (Ley Karin)",
+   "fecha_publicacion": "2024-01-15",
+   "fecha_entrada_vigor": "2024-08-01",
+   "estado_legal": "",
+   "tema_sst": "Riesgos psicosociales",
+   "subtema": "Acoso laboral, acoso sexual y violencia en el trabajo",
+   "relevancia_score": "9.5",
+   "fuente": "BCN LeyChile / Diario Oficial"
+  },
+  {
+   "id": "DS-26-2025-COMB",
+   "tipo_norma": "Decreto Supremo (Modificatorio)",
+   "numero": "26 (Min. Energía, 2025)",
+   "fecha_publicacion": "2025-09-17",
+   "fecha_entrada_vigor": "2025-10-18",
+   "estado_legal": "",
+   "tema_sst": "Seguridad rubro combustibles",
+   "subtema": "Tanques de doble pared y monitoreo de fugas/derrames",
+   "relevancia_score": "9.5",
+   "fuente": "BCN LeyChile / Diario Oficial"
+  },
+  {
+   "id": "CT-RIOHS-ART153",
+   "tipo_norma": "Ley",
+   "numero": "Código del Trabajo, arts. 153 a 157 (DFL 1/1994)",
+   "fecha_publicacion": "1994-01-06",
+   "fecha_entrada_vigor": "1994-01-06",
+   "estado_legal": "",
+   "tema_sst": "Reglamento interno y participación",
+   "subtema": "Reglamento Interno de Orden, Higiene y Seguridad (RIOHS)",
+   "relevancia_score": "9",
+   "fuente": "BCN LeyChile / Diario Oficial"
+  },
+  {
+   "id": "DS-148-2003-RESIDUOS",
+   "tipo_norma": "Decreto Supremo",
+   "numero": "148 (MINSAL, 2003)",
+   "fecha_publicacion": "2004-06-16",
+   "fecha_entrada_vigor": "2004-06-16",
+   "estado_legal": "",
+   "tema_sst": "Residuos peligrosos (ambiente y SST)",
+   "subtema": "Manejo de residuos peligrosos, aceites y lubricantes usados",
+   "relevancia_score": "8.5",
+   "fuente": "BCN LeyChile / Diario Oficial"
+  },
+  {
+   "id": "LEY-21220-TELETRABAJO",
+   "tipo_norma": "Ley",
+   "numero": "21.22",
+   "fecha_publicacion": "2020-03-26",
+   "fecha_entrada_vigor": "2020-04-01",
+   "estado_legal": "",
+   "tema_sst": "Trabajo a distancia y teletrabajo",
+   "subtema": "Condiciones de SST en teletrabajo y derecho a desconexión",
+   "relevancia_score": "8",
+   "fuente": "BCN LeyChile / Diario Oficial"
+  },
+  {
+   "id": "SUSESO-2026-08-18-001",
+   "tipo_norma": "Resolución o Jornada",
+   "numero": "None",
+   "fecha_publicacion": "2026-08-18",
+   "fecha_entrada_vigor": "None",
+   "estado_legal": "",
+   "tema_sst": "Participación y capacitación",
+   "subtema": "Comités Paritarios de Seguridad y Salud en el Trabajo",
+   "relevancia_score": "8",
+   "fuente": "SUSESO"
+  },
+  {
+   "id": "LEY-18410-SEC",
+   "tipo_norma": "Ley",
+   "numero": "18.410 (SEC)",
+   "fecha_publicacion": "1985-09-13",
+   "fecha_entrada_vigor": "1985-09-13",
+   "estado_legal": "",
+   "tema_sst": "Fiscalización rubro combustibles",
+   "subtema": "Superintendencia de Electricidad y Combustibles (SEC)",
+   "relevancia_score": "8",
+   "fuente": "BCN LeyChile / Diario Oficial"
+  },
+  {
+   "id": "DS-18-2020-TELETRABAJO",
+   "tipo_norma": "Decreto Supremo",
+   "numero": "18 (MTPS, 2020)",
+   "fecha_publicacion": "2020-07-03",
+   "fecha_entrada_vigor": "2020-10-02",
+   "estado_legal": "",
+   "tema_sst": "Trabajo a distancia y teletrabajo",
+   "subtema": "Condiciones específicas de SST para teletrabajadores",
+   "relevancia_score": "7.5",
+   "fuente": "BCN LeyChile / Diario Oficial"
+  },
+  {
+   "id": "LEY-20001-CARGA",
+   "tipo_norma": "Ley",
+   "numero": "20.001",
+   "fecha_publicacion": "2005-02-05",
+   "fecha_entrada_vigor": "2005-02-05",
+   "estado_legal": "",
+   "tema_sst": "Ergonomía y manipulación manual de cargas",
+   "subtema": "Peso máximo de carga humana",
+   "relevancia_score": "7",
+   "fuente": "BCN LeyChile / Diario Oficial"
+  },
+  {
+   "id": "LEY-21327-DT",
+   "tipo_norma": "Ley",
+   "numero": "21.327",
+   "fecha_publicacion": "2021-04-30",
+   "fecha_entrada_vigor": "None",
+   "estado_legal": "",
+   "tema_sst": "Fiscalización y cumplimiento",
+   "subtema": "Modernización de la Dirección del Trabajo",
+   "relevancia_score": "5.5",
+   "fuente": "BCN LeyChile / Diario Oficial"
+  },
+  {
+   "id": "LEY-21342-COVID",
+   "tipo_norma": "Ley",
+   "numero": "21.342",
+   "fecha_publicacion": "2021-06-01",
+   "fecha_entrada_vigor": "2021-06-01",
+   "estado_legal": "",
+   "tema_sst": "Seguridad sanitaria laboral",
+   "subtema": "Protocolo sanitario y retorno al trabajo (contexto COVID-19)",
+   "relevancia_score": "5",
+   "fuente": "BCN LeyChile / Diario Oficial"
+  },
+  {
+   "id": "DS-40-1969-DEROGADO",
+   "tipo_norma": "Decreto Supremo (Derogado)",
+   "numero": "40 (MTPS, 1969)",
+   "fecha_publicacion": "1969-03-07",
+   "fecha_entrada_vigor": "None",
+   "estado_legal": "",
+   "tema_sst": "Prevención de riesgos profesionales (histórico)",
+   "subtema": "Referencia derogada - reemplazada por DS 44/2024",
+   "relevancia_score": "2",
+   "fuente": "BCN LeyChile / Diario Oficial"
+  },
+  {
+   "id": "DS-54-1969-DEROGADO",
+   "tipo_norma": "Decreto Supremo (Derogado)",
+   "numero": "54 (MTPS, 1969)",
+   "fecha_publicacion": "1969-03-11",
+   "fecha_entrada_vigor": "None",
+   "estado_legal": "",
+   "tema_sst": "Comités paritarios (histórico)",
+   "subtema": "Referencia derogada - reemplazada por DS 44/2024",
+   "relevancia_score": "2",
+   "fuente": "BCN LeyChile / Diario Oficial"
+  }
+ ],
+ "obligaciones": [
+  {
+   "norma_id": "LEY-16744",
+   "norma_muestra": "Ley 16.744",
+   "tipo_norma": "Ley",
+   "requisito": "Afiliar a todos los trabajadores al Seguro Social contra Accidentes del Trabajo y Enfermedades Profesionales (organismo administrador: mutualidad o ISL)",
+   "evidencia": "Certificado de afiliación del organismo administrador + planilla de cotización al día",
+   "responsable": "Gerencia / RRHH",
+   "plazo": "Al inicio de la relación laboral y mensual",
+   "estado": "pendiente"
+  },
+  {
+   "norma_id": "LEY-16744",
+   "norma_muestra": "Ley 16.744",
+   "tipo_norma": "Ley",
+   "requisito": "Declarar y pagar la cotización adicional diferenciada de 0,90% a 3,40% según siniestralidad efectiva",
+   "evidencia": "Comprobantes de pago de cotizaciones ante el organismo administrador (últimos 6 meses)",
+   "responsable": "Finanzas / RRHH",
+   "plazo": "Mensual",
+   "estado": "pendiente"
+  },
+  {
+   "norma_id": "LEY-16744",
+   "norma_muestra": "Ley 16.744",
+   "tipo_norma": "Ley",
+   "requisito": "Denunciar los accidentes del trabajo y enfermedades profesionales ante el organismo administrador dentro de 24 horas",
+   "evidencia": "Formulario DIAT (Denuncia Individual de Accidente del Trabajo) firmado y timbrado",
+   "responsable": "Encargado SST",
+   "plazo": "Dentro de 24 h del evento",
+   "estado": "pendiente"
+  },
+  {
+   "norma_id": "LEY-16744",
+   "norma_muestra": "Ley 16.744",
+   "tipo_norma": "Ley",
+   "requisito": "Constituir Departamento de Prevención de Riesgos Profesionales si la empresa tiene 100 o más trabajadores",
+   "evidencia": "Acta de constitución del DPR + nómina de integrantes designada",
+   "responsable": "Gerencia",
+   "plazo": "Al alcanzar 100 trabajadores",
+   "estado": "pendiente"
+  },
+  {
+   "norma_id": "LEY-16744",
+   "norma_muestra": "Ley 16.744",
+   "tipo_norma": "Ley",
+   "requisito": "Constituir Comité Paritario de Higiene y Seguridad si la empresa tiene 25 o más trabajadores",
+   "evidencia": "Acta de constitución del Comité Paritario + nómina de sus integrantes elegidos",
+   "responsable": "Gerencia / Empresa",
+   "plazo": "Al alcanzar 25 trabajadores",
+   "estado": "pendiente"
+  },
+  {
+   "norma_id": "LEY-16744",
+   "norma_muestra": "Ley 16.744",
+   "tipo_norma": "Ley",
+   "requisito": "Realizar exámenes preocupacionales, ocupacionales y post-ocupacionales según riesgo",
+   "evidencia": "Fichas de exámenes médicos ocupacionales + certificados del prestador",
+   "responsable": "Encargado SST / Médico",
+   "plazo": "Al ingreso, periódico y al egreso",
+   "estado": "pendiente"
+  },
+  {
+   "norma_id": "DS-44-2024",
+   "norma_muestra": "Decreto Supremo 44 (MTPS, 2024)",
+   "tipo_norma": "Decreto Supremo",
+   "requisito": "Implementar el Sistema de Gestión Preventiva de Riesgos Laborales (PGRD) según estructura del DS 44",
+   "evidencia": "Manual PGRD + procedimientos documentados del sistema de gestión",
+   "responsable": "Encargado SST",
+   "plazo": "Desde 01-02-2025",
+   "estado": "pendiente"
+  },
+  {
+   "norma_id": "DS-44-2024",
+   "norma_muestra": "Decreto Supremo 44 (MTPS, 2024)",
+   "tipo_norma": "Decreto Supremo",
+   "requisito": "Elaborar el Plan de Gestión del Riesgo de Desastres (PGRD) con metodología AIDEP (diagnóstico) y ACCEDER (respuesta)",
+   "evidencia": "Plan PGRD documento + mapas de riesgo + planes de emergencia",
+   "responsable": "Encargado SST",
+   "plazo": "Anual (revisión)",
+   "estado": "pendiente"
+  },
+  {
+   "norma_id": "DS-44-2024",
+   "norma_muestra": "Decreto Supremo 44 (MTPS, 2024)",
+   "tipo_norma": "Decreto Supremo",
+   "requisito": "Constituir Comité Paritario y/o Departamento de Prevención según dotación (>=25 y >=100 trabajadores)",
+   "evidencia": "Actas de constitución + resoluciones de integración ante la Dirección del Trabajo",
+   "responsable": "Gerencia",
+   "plazo": "Según dotación",
+   "estado": "pendiente"
+  },
+  {
+   "norma_id": "DS-44-2024",
+   "norma_muestra": "Decreto Supremo 44 (MTPS, 2024)",
+   "tipo_norma": "Decreto Supremo",
+   "requisito": "Implementar el Programa de Prevención de Riesgos con identificación de peligros y evaluación de riesgos (matriz IPER)",
+   "evidencia": "Matriz IPER de riesgos laborales actualizada + programa anual",
+   "responsable": "Encargado SST",
+   "plazo": "Anual y al ingresar procesos nuevos",
+   "estado": "pendiente"
+  },
+  {
+   "norma_id": "DS-44-2024",
+   "norma_muestra": "Decreto Supremo 44 (MTPS, 2024)",
+   "tipo_norma": "Decreto Supremo",
+   "requisito": "Capacitar a todos los trabajadores en prevención de riesgos (mínimo 8 horas cada 2 años)",
+   "evidencia": "Registro de asistencia + diplomas de capacitación + programa de capacitación anual",
+   "responsable": "Encargado SST",
+   "plazo": "Mín. 8 h / <=2 años",
+   "estado": "pendiente"
+  },
+  {
+   "norma_id": "DS-44-2024",
+   "norma_muestra": "Decreto Supremo 44 (MTPS, 2024)",
+   "tipo_norma": "Decreto Supremo",
+   "requisito": "Investigar y analizar los accidentes del trabajo y enfermedades profesionales",
+   "evidencia": "Informes de investigación de accidentes + registro de estadísticas accidentabilidad",
+   "responsable": "Encargado SST",
+   "plazo": "Tras cada evento",
+   "estado": "pendiente"
+  },
+  {
+   "norma_id": "DS-44-2024",
+   "norma_muestra": "Decreto Supremo 44 (MTPS, 2024)",
+   "tipo_norma": "Decreto Supremo",
+   "requisito": "Consultar a los trabajadores y sus representantes la gestión preventiva (Derecho a saber y participar)",
+   "evidencia": "Actas de reuniones de consulta + mecanismos de participación documentados",
+   "responsable": "Encargado SST",
+   "plazo": "Periódica",
+   "estado": "pendiente"
+  },
+  {
+   "norma_id": "DS-160-2009-COMB",
+   "norma_muestra": "Decreto Supremo 160 (Min. Economía, 2008/2009)",
+   "tipo_norma": "Decreto Supremo",
+   "requisito": "Contar con resolución de aprobación SEC para instalaciones de combustibles líquidos (producción, almacenamiento, distribución, abastecimiento)",
+   "evidencia": "Resolución de aprobación SEC vigente de las instalaciones",
+   "responsable": "Encargado SST / SEC",
+   "plazo": "Previo a operación y renovada",
+   "estado": "pendiente"
+  },
+  {
+   "norma_id": "DS-160-2009-COMB",
+   "norma_muestra": "Decreto Supremo 160 (Min. Economía, 2008/2009)",
+   "tipo_norma": "Decreto Supremo",
+   "requisito": "Mantener medidas de seguridad en patios de almacenamiento de combustibles (distancias, sistemas de detección y extinción)",
+   "evidencia": "Plano de instalaciones aprobado + reporte de inspección SEC",
+   "responsable": "Encargado SST / Operaciones",
+   "plazo": "Continuo",
+   "estado": "pendiente"
+  },
+  {
+   "norma_id": "DS-160-2009-COMB",
+   "norma_muestra": "Decreto Supremo 160 (Min. Economía, 2008/2009)",
+   "tipo_norma": "Decreto Supremo",
+   "requisito": "Capacitar al personal en manejo de combustibles y procedimientos de emergencia",
+   "evidencia": "Registro de capacitación específica + procedimientos operativos de seguridad",
+   "responsable": "Encargado SST",
+   "plazo": "Anual",
+   "estado": "pendiente"
+  },
+  {
+   "norma_id": "DS-160-2009-COMB",
+   "norma_muestra": "Decreto Supremo 160 (Min. Economía, 2008/2009)",
+   "tipo_norma": "Decreto Supremo",
+   "requisito": "Contar con plan de emergencia específico para derrames e incendios de combustibles",
+   "evidencia": "Plan de emergencia + registro de simulacros + kit de respuesta a emergencias",
+   "responsable": "Encargado SST",
+   "plazo": "Anual (simulacros)",
+   "estado": "pendiente"
+  },
+  {
+   "norma_id": "DS-594-1999",
+   "norma_muestra": "Decreto Supremo 594 (MINSAL, 1999)",
+   "tipo_norma": "Decreto Supremo",
+   "requisito": "Garantizar condiciones sanitarias básicas: agua potable, servicios higiénicos, y manejo de residuos (art. 12 a 22)",
+   "evidencia": "Registro de análisis de agua + plan de saneamiento + actas de inspección",
+   "responsable": "Encargado SST / Administración",
+   "plazo": "Continuo",
+   "estado": "pendiente"
+  },
+  {
+   "norma_id": "DS-594-1999",
+   "norma_muestra": "Decreto Supremo 594 (MINSAL, 1999)",
+   "tipo_norma": "Decreto Supremo",
+   "requisito": "Controlar los factores de riesgo ambientales: ruido, iluminación, ventilación, temperatura (art. 7 a 11)",
+   "evidencia": "Informes de mediciones ambientales (ruido, iluminación) realizados",
+   "responsable": "Encargado SST",
+   "plazo": "Periódico según protocolo",
+   "estado": "pendiente"
+  },
+  {
+   "norma_id": "DS-594-1999",
+   "norma_muestra": "Decreto Supremo 594 (MINSAL, 1999)",
+   "tipo_norma": "Decreto Supremo",
+   "requisito": "Mantener límites permisibles de exposición y condiciones ambientales según DS 594",
+   "evidencia": "Informe de evaluación de cumplimiento de límites permisibles",
+   "responsable": "Encargado SST",
+   "plazo": "Según protocolo MINSAL",
+   "estado": "pendiente"
+  },
+  {
+   "norma_id": "DS-594-1999",
+   "norma_muestra": "Decreto Supremo 594 (MINSAL, 1999)",
+   "tipo_norma": "Decreto Supremo",
+   "requisito": "Dotar elementos de protección personal (EPP) según riesgo y velar por su uso",
+   "evidencia": "Registro de entrega de EPP firmado + inventario de EPP",
+   "responsable": "Encargado SST",
+   "plazo": "Al ingreso y reposición",
+   "estado": "pendiente"
+  },
+  {
+   "norma_id": "LEY-21643-KARIN",
+   "norma_muestra": "Ley 21.643 (Ley Karin)",
+   "tipo_norma": "Ley",
+   "requisito": "Implementar canales de recepción y tramitación de denuncias de acoso laboral y sexual (prevención e investigación)",
+   "evidencia": "Protocolo de prevención del acoso + canales formales de denuncia + registro de denuncias",
+   "responsable": "RRHH / Encargado SST",
+   "plazo": "Desde vigencia Ley Karin",
+   "estado": "pendiente"
+  },
+  {
+   "norma_id": "LEY-21643-KARIN",
+   "norma_muestra": "Ley 21.643 (Ley Karin)",
+   "tipo_norma": "Ley",
+   "requisito": "Investigar y sancionar el acoso laboral y sexual según los nuevos estándares de la Ley Karin",
+   "evidencia": "Informes de investigaciones + actas de medidas adoptadas + registro de sanciones",
+   "responsable": "RRHH",
+   "plazo": "Tras cada denuncia",
+   "estado": "pendiente"
+  },
+  {
+   "norma_id": "LEY-21643-KARIN",
+   "norma_muestra": "Ley 21.643 (Ley Karin)",
+   "tipo_norma": "Ley",
+   "requisito": "Establecer programas sanitarios y de capacitación sobre riesgos psicosociales y violencia laboral",
+   "evidencia": "Programa de capacitación psicosocial + registro de asistencia",
+   "responsable": "Encargado SST",
+   "plazo": "Anual",
+   "estado": "pendiente"
+  },
+  {
+   "norma_id": "DS-26-2025-COMB",
+   "norma_muestra": "Decreto Supremo (Modificatorio) 26 (Min. Energía, 2025)",
+   "tipo_norma": "Decreto Supremo (Modificatorio)",
+   "requisito": "Adecuar las instalaciones de distribución de combustibles líquidos a las nuevas exigencias de seguridad energética (Min. Energía)",
+   "evidencia": "Informe de cumplimiento de nuevas exigencias + renovación de resoluciones",
+   "responsable": "Encargado SST / Operaciones",
+   "plazo": "Según cronograma de la norma",
+   "estado": "pendiente"
+  },
+  {
+   "norma_id": "DS-26-2025-COMB",
+   "norma_muestra": "Decreto Supremo (Modificatorio) 26 (Min. Energía, 2025)",
+   "tipo_norma": "Decreto Supremo (Modificatorio)",
+   "requisito": "Revisar y actualizar los planes de contingencia de las estaciones de servicio (bencineras)",
+   "evidencia": "Plan de contingencia actualizado + registro de revisiones",
+   "responsable": "Encargado SST",
+   "plazo": "Anual",
+   "estado": "pendiente"
+  },
+  {
+   "norma_id": "CT-RIOHS-ART153",
+   "norma_muestra": "Ley Código del Trabajo, arts. 153 a 157 (DFL 1/1994)",
+   "tipo_norma": "Ley",
+   "requisito": "Elaborar y mantener actualizado el Reglamento Interno de Higiene y Seguridad (RIOHS) en empresas de 10 o más trabajadores",
+   "evidencia": "Reglamento interno firmado + constancia de entrega a trabajadores + acta de aprobación",
+   "responsable": "Gerencia / RRHH",
+   "plazo": "Al iniciar y ante cambios",
+   "estado": "pendiente"
+  },
+  {
+   "norma_id": "CT-RIOHS-ART153",
+   "norma_muestra": "Ley Código del Trabajo, arts. 153 a 157 (DFL 1/1994)",
+   "tipo_norma": "Ley",
+   "requisito": "Registrar el Reglamento Interno ante la Inspección del Trabajo (dentro de 5 días de su dictación)",
+   "evidencia": "Constancia de registro del RIOHS ante Inspección del Trabajo",
+   "responsable": "RRHH",
+   "plazo": "5 días tras dictación",
+   "estado": "pendiente"
+  },
+  {
+   "norma_id": "DS-148-2003-RESIDUOS",
+   "norma_muestra": "Decreto Supremo 148 (MINSAL, 2003)",
+   "tipo_norma": "Decreto Supremo",
+   "requisito": "Clasificar, almacenar y eliminar los residuos peligrosos conforme a la normativa ambiental (autorización sanitaria)",
+   "evidencia": "Autorización sanitaria de manejo de residuos peligrosos + manifiestos de transporte",
+   "responsable": "Encargado SST / Medioambiente",
+   "plazo": "Anual y por cada retiro",
+   "estado": "pendiente"
+  },
+  {
+   "norma_id": "DS-148-2003-RESIDUOS",
+   "norma_muestra": "Decreto Supremo 148 (MINSAL, 2003)",
+   "tipo_norma": "Decreto Supremo",
+   "requisito": "Mantener el registro de generación y eliminación de residuos peligrosos",
+   "evidencia": "Libro/manifiesto de residuos peligrosos al día + declaración anual SIDREP",
+   "responsable": "Medioambiente",
+   "plazo": "Anual",
+   "estado": "pendiente"
+  },
+  {
+   "norma_id": "LEY-21220-TELETRABAJO",
+   "norma_muestra": "Ley 21.220",
+   "tipo_norma": "Ley",
+   "requisito": "Formalizar por escrito el acuerdo de teletrabajo y las condiciones de trabajo a distancia",
+   "evidencia": "Contratos/anexos de teletrabajo firmados por ambas partes",
+   "responsable": "RRHH",
+   "plazo": "Al inicio del teletrabajo",
+   "estado": "pendiente"
+  },
+  {
+   "norma_id": "LEY-21220-TELETRABAJO",
+   "norma_muestra": "Ley 21.220",
+   "tipo_norma": "Ley",
+   "requisito": "Establecer la jornada, distribución y los derechos de desconexión digital de los teletrabajadores",
+   "evidencia": "Acuerdo de jornada y desconexión + cláusula contractual + registro de horas",
+   "responsable": "RRHH",
+   "plazo": "Al inicio del teletrabajo",
+   "estado": "pendiente"
+  },
+  {
+   "norma_id": "SUSESO-2026-08-18-001",
+   "norma_muestra": "Resolución o Jornada SUSESO-2026-08-18-001",
+   "tipo_norma": "Resolución o Jornada",
+   "requisito": "Verificar la última comunicación/guía SUSESO sobre participación y capacitación y dar cumplimiento",
+   "evidencia": "Registro de difusión al personal + actas de participación/capacitación",
+   "responsable": "Encargado SST",
+   "plazo": "Según instrucción SUSESO",
+   "estado": "pendiente"
+  },
+  {
+   "norma_id": "LEY-18410-SEC",
+   "norma_muestra": "Ley 18.410 (SEC)",
+   "tipo_norma": "Ley",
+   "requisito": "Mantener las instalaciones eléctricas y de combustibles sujetas a fiscalización SEC en regla",
+   "evidencia": "Certificados de instalaciones SEC + resoluciones de aprobación al día",
+   "responsable": "Encargado SST / SEC",
+   "plazo": "Continuo",
+   "estado": "pendiente"
+  },
+  {
+   "norma_id": "LEY-18410-SEC",
+   "norma_muestra": "Ley 18.410 (SEC)",
+   "tipo_norma": "Ley",
+   "requisito": "Atender y responder las fiscalizaciones e instrucciones de la SEC",
+   "evidencia": "Registro de fiscalizaciones SEC + oficios de cumplimiento respondidos",
+   "responsable": "Encargado SST",
+   "plazo": "Según requerimiento",
+   "estado": "pendiente"
+  },
+  {
+   "norma_id": "DS-18-2020-TELETRABAJO",
+   "norma_muestra": "Decreto Supremo 18 (MTPS, 2020)",
+   "tipo_norma": "Decreto Supremo",
+   "requisito": "Cumplir la regulación de condiciones de trabajo y teletrabajo del DS 18 al formalizar trabajo a distancia",
+   "evidencia": "Contratos de teletrabajo + procedimiento de implementación",
+   "responsable": "RRHH",
+   "plazo": "Al iniciar teletrabajo",
+   "estado": "pendiente"
+  },
+  {
+   "norma_id": "LEY-20001-CARGA",
+   "norma_muestra": "Ley 20.001",
+   "tipo_norma": "Ley",
+   "requisito": "Adoptar medidas para evitar la manipulación manual de carga cuando se exponga a riesgos para la salud (art. 1)",
+   "evidencia": "Evaluación de riesgo de carga manual + medidas de control adoptadas",
+   "responsable": "Encargado SST",
+   "plazo": "Según evaluación",
+   "estado": "pendiente"
+  },
+  {
+   "norma_id": "LEY-20001-CARGA",
+   "norma_muestra": "Ley 20.001",
+   "tipo_norma": "Ley",
+   "requisito": "Capacitar a los trabajadores en técnicas seguras de levantamiento de carga",
+   "evidencia": "Registro de capacitación en manejo de carga (TMERT complementario)",
+   "responsable": "Encargado SST",
+   "plazo": "Anual",
+   "estado": "pendiente"
+  },
+  {
+   "norma_id": "LEY-21327-DT",
+   "norma_muestra": "Ley 21.327",
+   "tipo_norma": "Ley",
+   "requisito": "Cumplir las obligaciones de fiscalización y cumplimiento en materia laboral y de seguridad social",
+   "evidencia": "Registro de fiscalizaciones de la DT + cumplimientos a requerimientos",
+   "responsable": "RRHH / Gerencia",
+   "plazo": "Según fiscalización",
+   "estado": "pendiente"
+  },
+  {
+   "norma_id": "LEY-21342-COVID",
+   "norma_muestra": "Ley 21.342",
+   "tipo_norma": "Ley",
+   "requisito": "Adoptar medidas de seguridad sanitaria laboral según disposiciones sanitarias aplicables",
+   "evidencia": "Protocolos de seguridad sanitaria + capacitación al personal",
+   "responsable": "Encargado SST",
+   "plazo": "Periódico",
+   "estado": "pendiente"
+  },
+  {
+   "norma_id": "DS-40-1969-DEROGADO",
+   "norma_muestra": "Decreto Supremo (Derogado) 40 (MTPS, 1969)",
+   "tipo_norma": "Decreto Supremo (Derogado)",
+   "requisito": "Norma histórica derogada por DS 44 (2024). No genera obligaciones nuevas vigentes.",
+   "evidencia": "Referencia histórica: registro de estado de derogación",
+   "responsable": "-",
+   "plazo": "-",
+   "estado": "no aplica"
+  },
+  {
+   "norma_id": "DS-54-1969-DEROGADO",
+   "norma_muestra": "Decreto Supremo (Derogado) 54 (MTPS, 1969)",
+   "tipo_norma": "Decreto Supremo (Derogado)",
+   "requisito": "Norma histórica derogada por DS 44 (2024). No genera obligaciones nuevas vigentes.",
+   "evidencia": "Referencia histórica: registro de estado de derogación",
+   "responsable": "-",
+   "plazo": "-",
+   "estado": "no aplica"
+  }
+ ],
+ "revisiones": []
+}

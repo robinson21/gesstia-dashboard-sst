@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GesstIA · Evidencia Objetiva SST</title>
+<style>
+:root{
+  --bg:#070c1a; --panel:#0d1526; --card:#121c33; --card2:#182441; --card3:#1e2d52;
+  --border:rgba(120,150,220,.14); --border2:rgba(120,150,220,.22);
+  --text:#eef2fb; --muted:#8ea0c8; --dim:#5c6f9e;
+  --accent:#4f8cff; --accent2:#7c5cff; --cyan:#35c8f0;
+  --green:#2fd583; --yellow:#f5b942; --red:#ff5d76; --orange:#ff9d3f;
+  --radius:14px; --shadow:0 10px 40px rgba(0,0,0,.45);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter','Segoe UI',system-ui,sans-serif;background:
+  radial-gradient(900px 500px at 85% -10%, rgba(79,140,255,.12), transparent 55%),
+  radial-gradient(700px 420px at -5% 10%, rgba(124,92,255,.10), transparent 55%),
+  var(--bg);color:var(--text);min-height:100vh;-webkit-font-smoothing:antialiased}
+.app{display:flex;min-height:100vh}
+.side{width:248px;flex-shrink:0;background:rgba(9,14,28,.8);border-right:1px solid var(--border);padding:22px 16px;display:flex;flex-direction:column;position:sticky;top:0;height:100vh}
+.brand{display:flex;align-items:center;gap:10px;padding:4px 6px 20px;border-bottom:1px solid var(--border);margin-bottom:18px}
+.logo{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;color:#fff;box-shadow:0 4px 14px rgba(79,140,255,.35)}
+.brand h1{font-size:14px;font-weight:700;letter-spacing:.2px}
+.brand small{display:block;font-size:10.5px;color:var(--muted);font-weight:400;letter-spacing:.4px;text-transform:uppercase;margin-top:2px}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:9px;color:var(--muted);font-size:13px;font-weight:500;text-decoration:none;transition:all .15s}
+.nav a .ic{width:18px;text-align:center;font-size:15px}
+.nav a.active,.nav a:hover{background:linear-gradient(90deg,rgba(79,140,255,.16),rgba(79,140,255,.04));color:var(--text)}
+.nav a.active{border:1px solid rgba(79,140,255,.3)}
+.side-foot{margin-top:auto;padding-top:16px;border-top:1px solid var(--border);font-size:11px;color:var(--dim)}
+.side-foot .v{font-weight:600;color:var(--muted)}
+.main{flex:1;min-width:0;padding:26px 34px 60px}
+.crumb{display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--dim);text-transform:uppercase;letter-spacing:.8px;margin-bottom:10px}
+.crumb b{color:var(--muted);font-weight:600}
+.topbar{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;margin-bottom:8px;flex-wrap:wrap}
+.titles h1{font-size:22px;font-weight:800;letter-spacing:-.3px}
+.titles p{color:var(--muted);font-size:13px;margin-top:4px}
+.hint{display:inline-flex;align-items:center;gap:6px;font-size:11px;color:var(--dim);margin-top:8px}
+.hint b{color:#b7a8ff;font-weight:600}
+
+/* Resumen superior */
+.summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin:22px 0}
+.sum-card{background:linear-gradient(180deg,var(--card),rgba(18,28,51,.6));border:1px solid var(--border);border-radius:var(--radius);padding:16px}
+.sum-card .lbl{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.7px;font-weight:600}
+.sum-card .val{font-size:26px;font-weight:800;margin-top:6px}
+.sum-card .sub{font-size:11.5px;color:var(--dim);margin-top:4px}
+.progress{height:10px;background:var(--card3);border-radius:99px;overflow:hidden;margin-top:10px}
+.progress i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--green),var(--yellow))}
+
+/* Toolbar */
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:6px 0 18px}
+.toolbar input[type=text]{flex:1;min-width:200px;background:var(--card2);border:1px solid var(--border2);border-radius:9px;padding:10px 14px;color:var(--text);font-size:13px;outline:none;transition:border .15s}
+.toolbar input:focus{border-color:var(--accent)}
+.toolbar .chipf{display:inline-flex;align-items:center;gap:6px;background:var(--card2);border:1px solid var(--border2);border-radius:999px;padding:7px 13px;font-size:12px;cursor:pointer;user-select:none;transition:all .15s;color:var(--muted)}
+.toolbar .chipf.active{background:var(--accent2);border-color:var(--accent2);color:#fff}
+.toolbar .tcount{font-size:12px;color:var(--muted);margin-left:auto}
+
+/* Normas (acordeón) */
+.norma-card{background:linear-gradient(180deg,var(--card),rgba(13,21,38,.7));border:1px solid var(--border);border-radius:var(--radius);margin-bottom:12px;overflow:hidden}
+.norma-head{display:flex;align-items:center;gap:12px;padding:15px 18px;cursor:pointer;border-left:4px solid var(--accent2);transition:background .12s}
+.norma-head:hover{background:rgba(79,140,255,.05)}
+.norma-head .chev{transition:transform .2s;color:var(--muted);font-size:12px}
+.norma-card.open .chev{transform:rotate(90deg)}
+.norma-head .nt{flex:1;min-width:0}
+.norma-head .nt .ni{font-size:13.5px;font-weight:700}
+.norma-head .nt .nsub{font-size:12px;color:var(--muted);margin-top:2px}
+.badge{display:inline-block;padding:2px 8px;border-radius:6px;font-size:10px;font-weight:700;letter-spacing:.3px;margin-left:6px;vertical-align:middle}
+.badge.vig{background:rgba(47,213,131,.16);color:#7ce8b5}
+.badge.pen{background:rgba(255,93,118,.16);color:#ff9aad}
+.badge.na{background:rgba(142,160,200,.15);color:var(--muted)}
+.est-count{font-size:11px;color:var(--dim);white-space:nowrap}
+.norma-body{display:none;border-top:1px solid var(--border)}
+.norma-card.open .norma-body{display:block}
+
+/* Obligaciones */
+.obs-table{width:100%;border-collapse:collapse;font-size:13px}
+.obs-table th{background:#161f3a;color:var(--muted);text-transform:uppercase;font-size:10.5px;letter-spacing:.6px;padding:11px 14px;text-align:left;font-weight:700;border-bottom:1px solid var(--border2)}
+.obs-table td{padding:12px 14px;border-bottom:1px solid rgba(120,150,220,.07);vertical-align:top}
+.obs-table tr:hover{background:rgba(79,140,255,.04)}
+.obs-table .req{font-weight:600;color:var(--text)}
+.obs-table .evi{color:var(--muted);font-size:12px;margin-top:3px;line-height:1.5}
+.obs-table .evi b{color:#b7a8ff}
+.obs-table .resp{font-size:12px;color:var(--cyan)}
+.obs-table .plazo{font-size:11.5px;color:var(--dim)}
+.est{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:700}
+.est .p{width:8px;height:8px;border-radius:50%}
+.est.ok{color:var(--green)}.est.ok .p{background:var(--green)}
+.est.pro{color:var(--yellow)}.est.pro .p{background:var(--yellow)}
+.est.pen{color:var(--red)}.est.pen .p{background:var(--red)}
+.est.na{color:var(--dim)}.est.na .p{background:var(--dim)}
+.obs-empty{padding:30px;text-align:center;color:var(--muted);font-size:13px}
+footer{text-align:center;color:var(--dim);font-size:11.5px;margin-top:30px;padding-top:20px;border-top:1px solid var(--border)}
+@media(max-width:1080px){.side{display:none}.main{padding:20px}}
+@media(max-width:760px){.obs-table th:nth-child(3),.obs-table th:nth-child(4),.obs-table td:nth-child(3),.obs-table td:nth-child(4){display:none}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <div class="brand"><div class="logo">G</div><div><h1>GesstIA</h1><small>Compliance · SST</small></div></div>
+    <nav class="nav">
+      <a href="sst-dashboard.html"><span class="ic">📊</span>Panel general</a>
+      <a href="#" class="active"><span class="ic">📋</span>Evidencia objetiva</a>
+    </nav>
+    <div class="side-foot">Rubro: <b style="color:var(--muted)">combustibles</b><br>Sistema de obligaciones SST · v1</div>
+  </aside>
+
+  <main class="main">
+    <div class="crumb">GesstIA / <b>Evidencia Objetiva</b></div>
+    <div class="topbar">
+      <div class="titles">
+        <h1>Requisitos y obligaciones por normativa</h1>
+        <p>Desglose de cada norma: cómo cumplirla y la <b style="color:#b7a8ff">evidencia objetiva</b> que acredita el cumplimiento.</p>
+        <div class="hint">⌨️ <b>Navegación por teclado:</b> Tab/Shift+Tab · Enter/Espacio abre cada norma · Home/End · Foco visible</div>
+      </div>
+    </div>
+
+    <!-- RESUMEN -->
+    <div class="summary">
+      <div class="sum-card"><div class="lbl">Normativas</div><div class="val" id="sNormas">—</div><div class="sub">vigentes con desglose</div></div>
+      <div class="sum-card"><div class="lbl">Obligaciones</div><div class="val" id="sOblig">—</div><div class="sub">requisitos totales</div></div>
+      <div class="sum-card"><div class="lbl">Con evidencia completa</div><div class="val" id="sEvi">—</div><div class="sub" id="sEviSub"></div></div>
+      <div class="sum-card"><div class="lbl">Pendientes de revisar</div><div class="val" id="sPend">—</div><div class="sub">en todas las normativas</div></div>
+    </div>
+
+    <!-- TOOLBAR -->
+    <div class="toolbar">
+      <input type="text" id="search" placeholder="🔍  Buscar por norma, requisito, evidencia, responsable…">
+      <span class="chipf" data-f="p" id="fPend">⚠️ Solo pendientes</span>
+      <span class="toolbar tcount" id="count"></span>
+    </div>
+
+    <!-- NORMAS -->
+    <div id="list"></div>
+    <footer>GesstIA · Sistema de obligaciones y evidencia objetiva SST · Datos sincronizados de Google Sheets <span id="gen"></span></footer>
+  </main>
+</div>
+
+<script>
+(async function main(){
+  let data={normativas:[],obligaciones:[]};
+  try{const r=await fetch('obligaciones_data.json'); if(r.ok) data=await r.json();}catch(e){}
+  const norm=Array.isArray(data.normativas)?data.normativas:[];
+  const obs=Array.isArray(data.obligaciones)?data.obligaciones:[];
+  const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const gd=new Date().toLocaleDateString('es-CL',{day:'numeric',month:'short'});
+  document.getElementById('gen').textContent=gd;
+
+  // Agrupar obligaciones por norma
+  const porNorma={};
+  obs.forEach(o=>{(porNorma[o.norma_id]=porNorma[o.norma_id]||[]).push(o);});
+
+  const estLabel={ok:'Implementado',pro:'En proceso',pen:'Pendiente',na:'No aplica'};
+  const estCls={ok:'ok',pro:'pro',pen:'pen',na:'na'};
+  const esDer=n=>((n.estado_legal||'')+'').toLowerCase().includes('derog')||(n.id||'').includes('DEROGADO');
+  const esRubro=n=>/combust|residuos peligrosos|SEC|electricidad/i.test((n.tema_sst||'')+' '+(n.subtema||''));
+
+  // Resumen
+  const vigentes=norm.filter(n=>!esDer(n));
+  const todasObs=obs.filter(o=>o.estado!=='no aplica');
+  const conEvi=todasObs.filter(o=>o.estado==='implementado').length;
+  const pend=todasObs.filter(o=>o.estado==='pendiente').length;
+  document.getElementById('sNormas').textContent=vigentes.length;
+  document.getElementById('sOblig').textContent=todasObs.length;
+  document.getElementById('sEvi').textContent=conEvi;
+  document.getElementById('sEviSub').textContent=Math.round(vigentes.length?conEvi/todasObs.length*100:0)+'% del total';
+  document.getElementById('sPend').textContent=pend;
+
+  let soloPend=false;
+  let curOpen=null;
+
+  function render(){
+    const q=(document.getElementById('search').value||'').toLowerCase();
+    const list=document.getElementById('list');list.innerHTML='';
+    let shown=0;
+
+    // Ordenar normativas: derivadas de rubro arriba, luego por relevancia
+    const orden=[...norm].sort((a,b)=>{
+      const ra=esRubro(a)?1:0, rb=esRubro(b)?1:0;
+      if(ra!==rb)return rb-ra;
+      return Number(b.relevancia_score||0)-Number(a.relevancia_score||0);
+    });
+
+    orden.forEach(n=>{
+      const obsNorma=porNorma[n.id]||[];
+      const visibles=obsNorma.filter(o=>{
+        if(soloPend && o.estado!=='pendiente')return false;
+        if(q){const blob=[n.id,n.tipo_norma,n.numero,n.tema_sst,n.subtema,o.requisito,o.evidencia,o.responsable,o.plazo].join(' ').toLowerCase();return blob.includes(q);}
+        return true;
+      });
+      if(visibles.length===0 && !(q||soloPend))return; // no mostrar norma vacía salvo que haya filtro
+      if(visibles.length===0)return;
+      shown++;
+
+      const counts={implementado:0,en_proceso:0,pendiente:0,no_aplica:0};
+      obsNorma.forEach(o=>counts[(o.estado||'pendiente').replace(/[ -]/g,'_')]=(counts[(o.estado||'pendiente').replace(/[ -]/g,'_')]||0)+1);
+      const cImpl=counts.implementado||0,cPro=counts.en_proceso||0,cPen=counts.pendiente||0;
+      const der=esDer(n);
+      const rub=esRubro(n)?'<span class="badge vig">⛽ rubro</span>':'';
+      const estBadge=der?'<span class="badge na">derogada</span>':(cImpl&&cImpl===obsNorma.length?'<span class="badge vig">✔ completa</span>':'');
+
+      const card=document.createElement('div');
+      card.className='norma-card'+((q||soloPend)?' ':'')+'';
+      card.dataset.id=n.id;
+      card.innerHTML=`
+        <div class="norma-head" role="button" tabindex="0" aria-expanded="false" aria-controls="body-${esc(n.id)}">
+          <span class="chev">▶</span>
+          <div class="nt">
+            <div class="ni">${esc(n.tipo_norma)} ${esc(n.numero||'')} ${rub}${estBadge}</div>
+            <div class="nsub">${esc(n.tema_sst)}${n.subtema?' · '+esc(n.subtema):''}</div>
+          </div>
+          <span class="est-count">✔ ${cImpl} · ● ${cPro} · ⚠ ${cPen}</span>
+        </div>
+        <div class="norma-body" id="body-${esc(n.id)}">
+          <table class="obs-table">
+            <thead><tr><th style="width:30%">Requisito / Obligación</th><th style="width:38%">Evidencia objetiva</th><th>Responsable</th><th>Plazo</th><th>Estado</th></tr></thead>
+            <tbody>${visibles.map(o=>`
+              <tr>
+                <td class="req">${esc(o.requisito)}</td>
+                <td class="evi">📎 ${esc(o.evidencia)}</td>
+                <td class="resp">${esc(o.responsable||'—')}</td>
+                <td class="plazo">${esc(o.plazo||'—')}</td>
+                <td><span class="est ${estCls[o.estado]||'pen'}"><span class="p"></span>${estLabel[o.estado]||'Pendiente'}</span></td>
+              </tr>`).join('')}</tbody>
+          </table>
+        </div>`;
+
+      // toggle acordeón con click + teclado
+      const head=card.querySelector('.norma-head');
+      const toggle=()=>{
+        const open=card.classList.toggle('open');
+        head.setAttribute('aria-expanded',open?'true':'false');
+        if(curOpen&&curOpen!==card){curOpen.classList.remove('open');curOpen.querySelector('.norma-head').setAttribute('aria-expanded','false');}
+        curOpen=open?card:null;
+      };
+      head.addEventListener('click',toggle);
+      head.addEventListener('keydown',e=>{
+        if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle();}
+      });
+      list.appendChild(card);
+    });
+
+    document.getElementById('count').textContent=shown+' normativa'+(shown!==1?'s':'');
+    if(shown===0){list.innerHTML='<div class="obs-empty">Sin resultados con el filtro actual.</div>';}
+  }
+
+  document.getElementById('search').addEventListener('input',render);
+  document.getElementById('fPend').addEventListener('click',()=>{
+    soloPend=!soloPend;
+    document.getElementById('fPend').classList.toggle('active',soloPend);
+    render();
+  });
+  render();
+})();
+</script>
+</body>
+</html>
