@@ -142,6 +142,39 @@ a.srcl:hover{text-decoration:underline}
 .empty{padding:50px;text-align:center;color:var(--muted)}
 footer{text-align:center;color:var(--dim);font-size:11.5px;margin-top:30px;padding-top:20px;border-top:1px solid var(--border)}
 @media(max-width:1080px){.side{display:none}.main{padding:20px}.chartgrid{grid-template-columns:1fr}}
+
+/* ===== VISTA EVIDENCIA ===== */
+.norma-card{background:linear-gradient(180deg,var(--card),rgba(13,21,38,.7));border:1px solid var(--border);border-radius:var(--radius);margin-bottom:12px;overflow:hidden}
+.norma-head{display:flex;align-items:center;gap:12px;padding:15px 18px;cursor:pointer;border-left:4px solid var(--accent2);transition:background .12s}
+.norma-head:hover{background:rgba(79,140,255,.05)}
+.norma-head .chev{transition:transform .2s;color:var(--muted);font-size:12px}
+.norma-card.open .chev{transform:rotate(90deg)}
+.norma-head .nt{flex:1;min-width:0}
+.norma-head .nt .ni{font-size:13.5px;font-weight:700}
+.norma-head .nt .nsub{font-size:12px;color:var(--muted);margin-top:2px}
+.badge{display:inline-block;padding:2px 8px;border-radius:6px;font-size:10px;font-weight:700;letter-spacing:.3px;margin-left:6px;vertical-align:middle}
+.badge.vig{background:rgba(47,213,131,.16);color:#7ce8b5}
+.badge.na{background:rgba(142,160,200,.15);color:var(--muted)}
+.est-count{font-size:11px;color:var(--dim);white-space:nowrap}
+.norma-body{display:none;border-top:1px solid var(--border)}
+.norma-card.open .norma-body{display:block}
+.obs-table{width:100%;border-collapse:collapse;font-size:13px}
+.obs-table th{background:#161f3a;color:var(--muted);text-transform:uppercase;font-size:10.5px;letter-spacing:.6px;padding:11px 14px;text-align:left;font-weight:700;border-bottom:1px solid var(--border2)}
+.obs-table td{padding:12px 14px;border-bottom:1px solid rgba(120,150,220,.07);vertical-align:top}
+.obs-table tr:hover{background:rgba(79,140,255,.04)}
+.obs-table .req{font-weight:600;color:var(--text)}
+.obs-table .evi{color:var(--muted);font-size:12px;margin-top:3px;line-height:1.5}
+.obs-table .evi b{color:#b7a8ff}
+.obs-table .resp{font-size:12px;color:var(--cyan)}
+.obs-table .plazo{font-size:11.5px;color:var(--dim)}
+.est{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:700}
+.est .p{width:8px;height:8px;border-radius:50%}
+.est.ok{color:var(--green)}.est.ok .p{background:var(--green)}
+.est.pro{color:var(--yellow)}.est.pro .p{background:var(--yellow)}
+.est.pen{color:var(--red)}.est.pen .p{background:var(--red)}
+.est.na{color:var(--dim)}.est.na .p{background:var(--dim)}
+.obs-empty{padding:30px;text-align:center;color:var(--muted);font-size:13px}
+@media(max-width:760px){.obs-table th:nth-child(3),.obs-table th:nth-child(4),.obs-table td:nth-child(3),.obs-table td:nth-child(4){display:none}}
 </style>
 </head>
 <body>
@@ -152,12 +185,18 @@ footer{text-align:center;color:var(--dim);font-size:11.5px;margin-top:30px;paddi
       <div class="logo">G</div>
       <div><h1>GesstIA</h1><small>Compliance · SST</small></div>
     </div>
-    <nav class="nav">
-      <a href="#" class="active"><span class="ic">📊</span>Panel general</a>
-      <a href="evidencia.html"><span class="ic">📋</span>Evidencia objetiva</a>
+    <nav class="nav" id="nav">
+      <button class="navbtn active" data-view="panel"><span class="ic">📊</span>Panel general</button>
+      <button class="navbtn" data-view="evidencia"><span class="ic">📋</span>Evidencia objetiva</button>
       <a href="#"><span class="ic">📜</span>Normativa</a>
       <a href="#"><span class="ic">🏢</span>Razones sociales</a>
     </nav>
+    <style>
+      .navbtn{display:flex;align-items:center;gap:10px;width:100%;padding:10px 12px;border-radius:9px;background:transparent;border:1px solid transparent;color:var(--muted);font-size:13px;font-weight:500;cursor:pointer;transition:all .15s;text-align:left;font-family:inherit}
+      .navbtn .ic{width:18px;text-align:center;font-size:15px}
+      .navbtn.active,.navbtn:hover{background:linear-gradient(90deg,rgba(79,140,255,.16),rgba(79,140,255,.04));color:var(--text)}
+      .navbtn.active{border-color:rgba(79,140,255,.3)}
+    </style>
     <div class="side-foot">
       Rubro: <span class="v" id="rubro">—</span><br>
       Matriz <span class="v">v<span id="version">—</span></span> · <span id="gen"></span>
@@ -166,6 +205,8 @@ footer{text-align:center;color:var(--dim);font-size:11.5px;margin-top:30px;paddi
 
   <!-- MAIN -->
   <main class="main">
+    <!-- ===== VISTA PANEL ===== -->
+    <div id="view-panel">
     <div class="crumb">GesstIA / <b>Panel de Cumplimiento</b></div>
     <div class="topbar">
       <div class="titles">
@@ -238,6 +279,32 @@ footer{text-align:center;color:var(--dim);font-size:11.5px;margin-top:30px;paddi
       </div>
       <div id="empty" class="empty" style="display:none">Sin resultados con los filtros actuales.</div>
     </div>
+    </div><!-- /view-panel -->
+
+    <!-- ===== VISTA EVIDENCIA ===== -->
+    <div id="view-evidencia" style="display:none">
+      <div class="crumb">GesstIA / <b>Evidencia Objetiva</b></div>
+      <div class="topbar">
+        <div class="titles">
+          <h1>Requisitos y obligaciones por normativa</h1>
+          <p>Desglose de cada norma: cómo cumplirla y la <b style="color:#b7a8ff">evidencia objetiva</b> que acredita el cumplimiento.</p>
+          <div class="hint">⌨️ <b>Navegación por teclado:</b> Tab/Shift+Tab · Enter/Espacio abre cada norma · Foco visible</div>
+        </div>
+      </div>
+      <div class="kpis">
+        <div class="kpi"><div class="khead"><div class="kicon">📜</div><div class="klabel">Normativas</div></div><div class="kvalue" id="eNormas">—</div><div class="ksub">vigentes con desglose</div></div>
+        <div class="kpi"><div class="khead"><div class="kicon">✅</div><div class="klabel">Obligaciones</div></div><div class="kvalue" id="eOblig">—</div><div class="ksub">requisitos totales</div></div>
+        <div class="kpi"><div class="khead"><div class="kicon">📎</div><div class="klabel">Con evidencia completa</div></div><div class="kvalue" id="eEvi">—</div><div class="ksub" id="eEviSub"></div></div>
+        <div class="kpi"><div class="khead"><div class="kicon">⚠️</div><div class="klabel">Pendientes</div></div><div class="kvalue" id="ePend">—</div><div class="ksub">en todas las normativas</div></div>
+      </div>
+      <div class="toolbar">
+        <input type="text" id="eSearch" placeholder="🔍  Buscar por norma, requisito, evidencia, responsable…">
+        <span class="chipf" id="ePendChip">⚠️ Solo pendientes</span>
+        <span class="toolbar tcount" id="eCount"></span>
+      </div>
+      <div id="eList"></div>
+    </div><!-- /view-evidencia -->
+
     <footer>GesstIA · Matriz de cumplimiento normativo SST · Datos de <span id="gen2"></span></footer>
   </main>
 </div>
@@ -487,6 +554,96 @@ footer{text-align:center;color:var(--dim);font-size:11.5px;margin-top:30px;paddi
 
   // ========== INICIALIZAR ==========
   renderAll();
+
+  // ========== PESTAÑAS (panel / evidencia) ==========
+  const views={panel:document.getElementById('view-panel'),evidencia:document.getElementById('view-evidencia')};
+  const navBtns=document.querySelectorAll('#nav .navbtn');
+  function showView(v){
+    navBtns.forEach(b=>b.classList.toggle('active',b.dataset.view===v));
+    Object.keys(views).forEach(k=>{views[k].style.display=(k===v)?'':'none';});
+    // re-render chart en pantalla al volver al panel (a veces se descuadra al ocultar canvas)
+    if(v==='panel'){requestAnimationFrame(()=>{Object.values(charts).forEach(c=>{if(c&&c.resize)c.resize();});});}
+  }
+  navBtns.forEach(b=>b.addEventListener('click',()=>showView(b.dataset.view)));
+
+  // ========== VISTA EVIDENCIA OBLIGATORIA ==========
+  (function loadEvidencia(){
+    let edata={normativas:[],obligaciones:[]};
+    fetch('obligaciones_data.json').then(r=>r.ok?r.json():{}).then(d=>{edata=d||edata;renderEvidencia();}).catch(()=>{});
+    const eNorm=()=>Array.isArray(edata.normativas)?edata.normativas:[];
+    const eObs=()=>Array.isArray(edata.obligaciones)?edata.obligaciones:[];
+
+    function renderEvidencia(){
+      const norm=eNorm(),obs=eObs();
+      const porNorma={};
+      obs.forEach(o=>{(porNorma[o.norma_id]=porNorma[o.norma_id]||[]).push(o);});
+      const estLabel={ok:'Implementado',pro:'En proceso',pen:'Pendiente',na:'No aplica'};
+      const estCls={ok:'ok',pro:'pro',pen:'pen',na:'na'};
+      const esDer=n=>((n.estado_legal||'')+'').toLowerCase().includes('derog')||(n.id||'').includes('DEROGADO');
+      const esRubro=n=>/combust|residuos peligrosos|SEC|electricidad/i.test((n.tema_sst||'')+' '+(n.subtema||''));
+
+      const vigentes=norm.filter(n=>!esDer(n));
+      const todas=obs.filter(o=>o.estado!=='no aplica');
+      const conEvi=todas.filter(o=>o.estado==='implementado').length;
+      const pend=todas.filter(o=>o.estado==='pendiente').length;
+      document.getElementById('eNormas').textContent=vigentes.length;
+      document.getElementById('eOblig').textContent=todas.length;
+      document.getElementById('eEvi').textContent=conEvi;
+      document.getElementById('eEviSub').textContent=Math.round(todas.length?conEvi/todas.length*100:0)+'% del total';
+      document.getElementById('ePend').textContent=pend;
+
+      let soloPend=false, curOpen=null;
+      function renderEv(){
+        const q=(document.getElementById('eSearch').value||'').toLowerCase();
+        const list=document.getElementById('eList');list.innerHTML='';
+        let shown=0;
+        const orden=[...norm].sort((a,b)=>{
+          const ra=esRubro(a)?1:0,rb=esRubro(b)?1:0;if(ra!==rb)return rb-ra;
+          return Number(b.relevancia_score||0)-Number(a.relevancia_score||0);
+        });
+        orden.forEach(n=>{
+          const on=porNorma[n.id]||[];
+          const vis=on.filter(o=>{
+            if(soloPend&&o.estado!=='pendiente')return false;
+            if(q){const blob=[n.id,n.tipo_norma,n.numero,n.tema_sst,n.subtema,o.requisito,o.evidencia,o.responsable,o.plazo].join(' ').toLowerCase();return blob.includes(q);}
+            return true;
+          });
+          if(vis.length===0)return;
+          shown++;
+          const cI=on.filter(o=>o.estado==='implementado').length,cPro=on.filter(o=>o.estado==='en_proceso').length,cPen=on.filter(o=>o.estado==='pendiente').length;
+          const der=esDer(n),rub=esRubro(n)?'<span class="badge vig">⛽ rubro</span>':'';
+          const estBadge=der?'<span class="badge na">derogada</span>':(cI&&cI===on.length?'<span class="badge vig">✔ completa</span>':'');
+          const card=document.createElement('div');card.className='norma-card';
+          card.innerHTML=`
+            <div class="norma-head" role="button" tabindex="0" aria-expanded="false" aria-controls="b-${esc(n.id).replace(/[\s.]/g,'')}">
+              <span class="chev">▶</span>
+              <div class="nt"><div class="ni">${esc(n.tipo_norma)} ${esc(n.numero||'')} ${rub}${estBadge}</div>
+              <div class="nsub">${esc(n.tema_sst)}${n.subtema?' · '+esc(n.subtema):''}</div></div>
+              <span class="est-count">✔ ${cI} · ● ${cPro} · ⚠ ${cPen}</span>
+            </div>
+            <div class="norma-body">
+              <table class="obs-table"><thead><tr><th style="width:30%">Requisito / Obligación</th><th style="width:38%">Evidencia objetiva</th><th>Responsable</th><th>Plazo</th><th>Estado</th></tr></thead>
+              <tbody>${vis.map(o=>`<tr><td class="req">${esc(o.requisito)}</td><td class="evi">📎 ${esc(o.evidencia)}</td><td class="resp">${esc(o.responsable||'—')}</td><td class="plazo">${esc(o.plazo||'—')}</td><td><span class="est ${estCls[o.estado]||'pen'}"><span class="p"></span>${estLabel[o.estado]||'Pendiente'}</span></td></tr>`).join('')}</tbody></table>
+            </div>`;
+          const head=card.querySelector('.norma-head');
+          head.addEventListener('click',()=>{
+            const open=card.classList.toggle('open');head.setAttribute('aria-expanded',open?'true':'false');
+            if(curOpen&&curOpen!==card){curOpen.classList.remove('open');curOpen.querySelector('.norma-head').setAttribute('aria-expanded','false');}
+            curOpen=open?card:null;
+          });
+          head.addEventListener('keydown',e=>{
+            if(e.key==='Enter'||e.key===' '){e.preventDefault();head.click();}
+          });
+          list.appendChild(card);
+        });
+        document.getElementById('eCount').textContent=shown+' normativa'+(shown!==1?'s':'');
+        if(shown===0)list.innerHTML='<div class="obs-empty">Sin resultados con el filtro actual.</div>';
+      }
+      document.getElementById('eSearch').addEventListener('input',renderEv);
+      document.getElementById('ePendChip').addEventListener('click',()=>{soloPend=!soloPend;document.getElementById('ePendChip').classList.toggle('active',soloPend);renderEv();});
+      renderEv();
+    }
+  })();
 })();
 </script>
 </body>
